@@ -1,2 +1,2 @@
 # notes
-Place to keep all my technical notes for use in my website
+This repository is a place to keep all my technical notes.  Eventually is will be incorporated into www.geraintanderson.com.
