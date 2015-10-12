@@ -77,3 +77,52 @@
 <p><em>Kill PID</em> Kill a job with ID PID</p>
 <p><strong>kill -9 `cat filename.txt`</strong> Force kill a job where the PID is stored in the file <em>filename.txt</em>.  See nohup for details about creating the file</p>
 <p><strong>-9</strong> Force kill</p>
+<h3>Miscellaneous</h3>
+<p><strong>pwd</strong> Shows the current directory</p>
+<p><strong>ls -lu</strong> Shows last accessed date rather than created date</p>
+<p><strong>mkdir -p directory/subdirectory/subdirectory</strong> Make the full path</p>
+<p><strong>uname</strong> Displays the UNIX version or computer name</p>
+<p><strong>passwd</strong>Change the password</p>
+<p><strong>ctrl D</strong> Stop the file</p>
+<p><strong>ctrl C</strong> Stop the script</p>
+<p><strong>ctrl u</strong> Start the line again</p>
+<p><strong>r</strong> repeat the last command</p>
+<p><strong>rm -f filename</strong> Force the file to be deleted without prompting</p>
+<p><strong>history</strong> View the command history</p>
+<p><strong>Esc ##### G</strong> Execute a command from the history using its number</p>
+<p><strong>file filename</strong> View filetype information about the file</p>
+<p><strong>stty erase <em>backspace</em></strong> Set errace to the backspace key</p>
+<p><strong>man -k <em>keyword</em></strong> Identify the command you need</p>
+<p><strong>uncompress</strong> Uncompress a file</p>
+<p><strong>ls -s | sort -n</strong> Sort files by file size</p>
+<p><strong>bc</strong> Basic calculator</p>
+<p><strong>expr `<em>expression</em></strong> Execute the expression such as addition</p>
+<p><strong>df</strong> Shows the number of blocks used on each available volume</p>
+<p><strong>du</strong> Estimate the disk usage <code>du -sh</code></p>
+<p><strong>su -l <em>target</em> <em>link_name</em></strong> Create a symbolic link.</p>
+<p><strong>echo "body" | mailx -s "subject" -a "attachment" "email_address"</strong> Send an email</p>
+<p><strong>curl url > file</strong> Get the url contents to a file</p>
+<p><strong>nohup my_command > my.log 2>&1&</strong>Write the output of my_command to my.log</p>
+<p><strong>virtualenv directory</strong> Create a virtual environment in a specified drectory</p>
+<p><strong>echo $! > save_pid.txt</strong>Write the PID of the last process executed to a file</p>
+<h3>Navigation</h3>
+<p><strong>pushd path</strong>Change your current directory and store it on the virtual stack</p>
+<p><strong>pushd +n</strong>Rotate the stack n times to the right</p>
+<p><strong>puthd -n</strong>Rotate the stack n times to the left</p>
+<p><strong>popd</strong> Remove the directory from the top of the virtual stack and change the current directory to the new top</p>
+<p><strong>dirs</strong>View the virtual stack without changing it.</p>
+<h3>Printing</h3>
+<p>Printf is used in preference to echo because it is more portable.  Echo is only portable if you omit all flags and escape characters</p>
+<p><strong>printf ‘%s%s’ “string1” “string2”</strong> Substitute %s with the strings in order</p>
+<p><strong>%s %d %b</strong> Preformatter: string, Preformatter: decimal, Preformatter: binary</p>
+<p><strong>%ns</strong> Substitute for a string of length n characters</p>
+<p><strong>printf</strong> Outputs to the standard output stream (stdout) </p>
+<p><strong>fprintf</strong> goes to a file handle (FILE*) </p>
+<p><strong>sprintf</strong> Writes to a buffer you allocated</p>
+<h3>Xargs</h3>
+<p><strong>command1 | xargs command2</strong>Run command2 on a list of file names created from command1</p>
+<p><strong>-e</strong>turns off the end of file string (_) completely </p>
+<h3>Special characters</h3>
+<p><strong>\t</strong>Tab</p>
+<p><strong>\n</strong>New Line</p>
+<p><strong>^M</strong>Windows New line (carriage return)</p>
