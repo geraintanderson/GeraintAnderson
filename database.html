@@ -1,0 +1,99 @@
+<h1>Database</h1>
+<h2>MongoDB</h2>
+<p><strong></strong></p>
+<h3>Syntax</h3>
+<p><strong>JSON
+{key:value, key:value, key:value}
+</strong> JavaScript Object Notation</p>
+<p><strong>'Document.subdocument'</strong> Dot Notation to reach inside nested documents or inside arrays by referencing the array position (starting at 0)</p>
+<h3>Examples</h3>
+<p><strong>mongod --dbpath path --storageEngine engine</strong>Path the the MongoDb database and run using the specified storage engine such as wiredTiger or mmapv1</p>
+<p><strong>mongod --fork --logpath /var/log/mongodb.log</strong> Run in the background.  The log location must be accessible by the user running this command so you could use home instead or some other location such as
+mongod --fork --logpath /home/geraint/Mongodb/mongodb.log
+</p>
+<h3>Terminology, standards and best practices</h3>
+<p><strong>Multikey Indexes</strong> Multikey indexes are indexes on arrays</p>
+<p><strong>geoJSON</strong>Used for geomitery points eg. Embed a location.</p>
+<h3>Error Handling</h3>
+<p><strong>Pymongo.errors</strong></p>
+<p><strong>autoReconnect</strong>Issues with connection for replica sets due to the primary not being available eg. during failover</p>
+<h3>Schema Design</h3>
+<p>There is no declared schema.  It is more important to match the data access patterns of the application rather than using the third normal form.
+Documents are stored as rich documents.
+Pre-join the data because table joins don't exist in MongoDb.  Embedding should be used.  Embedding is used to increase read performance.  In one to one always embed.  In one to many if embedding (e.g. one to few), always embed from the many to the one for example embed comments (few) in the blog post collection (one).  Use [* True Linking *] for one to many relationships which means set the _id of the “one” to a field in the many e.g. the people have a “city” field.  The city collection has an _id that maps to the city field for the people.  In many to many link instead of embedding (depending on scenario).
+No transactions but does have atomic operations (people see all changes or none).  This can accomplish the same as transactions
+To store large files use gridfs to split it into chunks that fit in the database.
+</p>
+<h3>Commands and variables</h3>
+<p><strong>help command</strong>Shows help about topics or commands</p>
+<p><strong>tab</strong> Autocomplete</p>
+<p><strong>print(string)</strong>print to the screen</p>
+<p><strong>printjson(JSON)</strong>Prints a JSON document</p>
+<p><strong>NumberInt(number)</strong>32 bit number</p>
+<p><strong>NumberLong(number)</strong>64 bit number</p>
+<p><strong>mongoimport --db database --collection collection input_json_file</strong>Import JSON data</p>
+<p><strong>mongoimport -d database -c collection < file.json</strong> Import data</p>
+<p><strong>db.collection.save()</strong></p>
+<p><strong></strong>If there isn't already an ObjectId it creates one and inserts the JSON document. If there is an ObjectId it just updates the existing JSON document.</p>
+<p><strong>db.collection.explain()</strong>Returns an explain object that can be used to show details of the command that's run (query plan).  Passing an argument of true to explain forces it to also run the command.</p>
+<p><strong>db.collection.createIndex( {key1 : type1, key2 : type2} )</strong>Create indexes.  Types are either 1 (ascending) or -1 (descending), '2d' for geospacial indexes, '2dsphere' for geospacial spherical location using longitude/latitude, 'text' for full text search</p>
+<p><strong>db.collection.dropIndex( {key1 : val1, key2 : val2} )</strong>Remove an index</p>
+<p><strong>Cur = db.collection.find(); null;</strong>Null stops the cursor from being written out</p>
+<p><strong>cur.hasNext()</strong>Returns true if the cursor variable has another document</p>
+<p><strong>cur.next()</strong>Return the next document in the cursor variable</p>
+<p><strong>mongotop int</strong>Show the collections most in use and how the time is used</p>
+<p><strong>rs.slaveOk()</strong>Allows reading from a secondary</p>
+<h3>Query Operators</h3>
+Operator	Action
+$gt	Greater than
+$gte	Greater or equal to
+$lt	Less than
+$lte	Less than or equal to
+$exists	Shows if a document has a key
+$type	Fund BSON types e.g. string is type 2
+$regex	Perl style regular expression
+$or	Options given as an array e.g. { $or : [{},{}] }
+$and	Similar to Or but not often needed sue to multiple parameters on a single document
+$all	Match documents with all fields in the array
+$in [* How is this different to or *]	Match documents with any fields in the array
+$set	Update (or create) a specific field using the update method
+$unset	Remove a field and its value from a document
+$inc	Increment the value of s field used in the update method
+$pop()	Remove an element from the end (or beginning) of an array
+$push()	Add an element to the end of an array
+$pushAll()	Add numerous elements to the end of an array
+$pull()	Remove a specific aray element regardless of its position
+$pullAll()	Remove a number of specific array elements regardless of their positions
+$addToSet()	Adds the element to an array only if it not already present
+$elemMatch	Match an element witth at least one matching field
+$near	Used with geospacial arrays to find documents with the closest coordinates
+$geometry	Used with geospacial coordinates
+$maxDistance	Specify a maximum distange for geospacial coordinates
+$text	Used with text indexes
+$search	Match words in a string of text with text indexes.  Ignores punctuation, useless stop words like “the” and capitalisation eg. {$text : { $search : “cat” } }
+$meta	Used with text [* always *] to show the text score eg how good was the match eg. { $meta : “textScore” }
+	
+$project	1:1 document relationship.  Aggregation operator
+$match	n:1 document relationship.  Aggregation operator
+$group	n:1 document relationship.  Aggregation operator.  Set the output id
+$sort	1:1 document relationship.  Aggregation operator
+$skip	n:1 document relationship.  Aggregation operator
+$limit	n:1 document relationship.  Aggregation operator
+$unwind	1:n document relationship.  Aggregation operator.  Used to flatten out a document with an array by creating a new document for each array value.  It can cause the _id to be duplicated so be careful when using $out.
+$out	1:1 document relationship.  Aggregation operator
+$min	Aggregation expression
+$max	Aggregation expression
+$avg	Aggregation expression
+$sum	Aggregation expression.  Give the name of the field to sum its contents or just 1 to increase the count of 1 per match.
+$out	Redirect the result of an aggregation to a new collection.  Be careful because it destroys any existing collection with the same name.
+
+
+
+<p><strong></strong></p>
+<p><strong></strong></p>
+<p><strong></strong></p>
+<p><strong></strong></p>
+<p><strong></strong></p>
+<p><strong></strong></p>
+<p><strong></strong></p>
+<p><strong></strong></p>
