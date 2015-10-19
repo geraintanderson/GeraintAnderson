@@ -1,0 +1,94 @@
+body{
+	background-color:#CCEBFF;
+}
+#signature{
+	width:250px;
+}
+#socialmedia{
+	float:right;
+}
+#linkedinprofile{
+	margin-top:10px;
+}
+#twitterfollow{
+	margin-top:10px;
+}
+#twittershare{
+	float:right;
+	margin:5px;
+}
+#header{
+	width:700px;
+	margin:auto;
+}
+#topbar{
+	background-color:#66C2FF;
+	height:25px;
+}
+#topmenu{
+	width:700px;
+	height:100%;
+	margin:auto;
+}
+.topselect{
+	width:25%;
+	height:100%;
+	/*background-color:brown;*/
+	float:left;
+	text-align:center;
+}
+#selected{
+	background-color:#007ACC;
+	border-radius:10px;
+}
+#container{
+	background-color:#E6F5FF;
+	width:700px;
+	margin:auto;
+	/*box-shadow:0 0 20px 3px #CCEBFF;*/
+	box-shadow:0 0 10px 10px #66C2FF;
+}
+#fullwidthcontent{
+	background-color:white;
+	float:right;
+	width:700px;
+	border-radius:5px;
+}
+#sidebar{
+	/*background-color:#CCEBFF;*/
+	background-color:white;
+	float:left;
+	width:140px;
+	height:200px;
+	margin-right:10px;
+	border-radius:5px;
+}
+#content{
+	background-color:white;
+	float:right;
+	width:550px;
+	border-radius:5px;
+}
+#footer{
+	background-color:#66C2FF;
+	clear:both;
+	/*width:700px;*/
+	width:100%;
+	text-align:center;
+}
+h1{
+	/* Set font, size etc */
+}
+h2{
+	/* Set font, size etc */
+}
+p{
+	margin-left:5px;
+	margin-right:5px;
+	font-family: Arial, Helvetica, sans-serif;
+	/* Set font, size etc */
+}
+.tech_logo{
+	width:50px;
+	float:left;
+}

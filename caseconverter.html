@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Geraint Anderson Web Development</title>
+		<meta name="keywords" content="Geraint, Anderson, web, developer, development, html, html5, css, css3, javascript, portfolio">
+		<meta name="description" content="Online portfolio for Geraint Anderson">
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="site_theme.css">
+		<script>
+			!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+		</script>
+		<script src="caseconverter.js"></script>
+		<style>
+			textarea{
+				margin-left:5%;
+				margin-right:5%;
+				margin-bottom:10px;
+				width:90%
+				
+			}
+		</style>
+	</head>
+	<body>
+		<div id="header">
+			<a href="index.html"><img id="signature" src="sig.gif" alt="Geraint Anderson signature logo"></a>
+			<div id="socialmedia">
+				<a id="linkedinprofile" href="http://uk.linkedin.com/pub/geraint-anderson/3a/b46/789" style="text-decoration:none;"><span style="font: 80% Arial,sans-serif; color:#0783B6;"><img src="https://static.licdn.com/scds/common/u/img/webpromo/btn_in_20x15.png" width="20" height="15" alt="View Geraint Anderson's LinkedIn profile" style="vertical-align:middle" border="0">View my Linked In profile</span></a><br>
+				<a id="twitterfollow" href="https://twitter.com/Geraint_TJ_A" class="twitter-follow-button" data-show-count="false">Follow @Geraint_TJ_A</a>
+			</div>
+		</div>
+		<div id="topbar">
+			<div id="topmenu">
+				<span class="topselect"><a href="index.html">Home</a></span><span class="topselect"><a href="biography.html">Biography</a></span><span class="topselect"><a href="cv.html">CV</a></span><span id="selected" class="topselect"><a href="portfolio.html">Portfolio</a></span>
+			</div>
+		</div>
+		<div id="container">
+			<div id="sidebar">
+				<b>Menu</b><br>
+				<a href="portfolio.html">Portfolio Home</a><br>
+				<a href="caseconverter.html">Case Converter</a><br>
+				<a href="higherlower.html">Higher or Lower</a><br>
+				<a href="caesarcipher.html">Caesar's Cipher</a><br>
+				<!--<a href="importanturgent.html">Important Urgent List</a>-->
+			</div>
+			<div id="content">
+				<a id="twittershare" href="https://twitter.com/share" class="twitter-share-button" data-via="Geraint_TJ_A">Tweet</a>
+				<h2>Case Converter</h2>
+				<p>Working in correspondence I sometimes see issues where the case of names or addresses is incorrect.  This could be down to call centre agents entering the data incorrectly or some process downstream destroying the case.  I wrote this simple case converter using <a href="caseconverter.js">JavaScript</a>.</p>
+				<!-- I'll upload a simplified awk and BASH version soon which have exceptions built in to handle things like double barrelled names or names with a capital somewhere other than the first character such as McNames.-->
+				<hr>
+				<form name='mainForm' onSubmit='return false'>
+					Conversion Text:<br><textarea id='inText' value='Enter text here' ></textarea><br>
+					Converted Text:<br><textarea id='outText'></textarea><br>
+					<input type='submit' value='convert' onClick='submitButton()'><br>
+					<input id='upperCaseRad' type='radio' name='caseOption' value='upperCase'>Upper Case
+					<input id='lowerCaseRad' type='radio' name='caseOption' value='lowerCase'>Lower Case
+					<input id='titleCaseRad' type='radio' name='caseOption' value='titleCase'>Title Case
+					<input id='standardCaseRad' type='radio' name='caseOption' value='standardCase'>Standard Case
+				</form><br>
+			</div>
+			<div id="footer">
+				Created by <a href="mailto:geraint@geraintanderson.com">Geraint Anderson</a>
+			</div>
+		</div>
+	</body>
+</html>
