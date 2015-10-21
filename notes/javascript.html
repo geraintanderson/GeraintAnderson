@@ -19,7 +19,8 @@
    // jQuery methods go here...
 });
 </strong> Wait until the document is fully loaded before doing stuff to avoid letters by performing actions on selectors that don’t yet exist</p>
-<p><strong>$(function(){
+<p><strong>$(function(
+ng-show ng-hide){
    // jQuery methods go here...
 });
 </strong>Same as the document ready function above to hold off execution until the document is loaded.  This alternative may be less readable.</p>
@@ -38,11 +39,17 @@ view -
 ng-app must be on the page
 ng-controller="nameCtrl" to name a controler
 ng-img for images
+ng-model push into the $scope object
+ng-repeat like a for loop
+
 
 $scope
 $http
 
+pipe into filters e.g. {{variable | number}} to format as a number
 Controllers should live in modules
+services perform a specific function
+
 
 <p><strong></strong></p>
 <p><strong></strong></p>
