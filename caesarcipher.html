@@ -1,320 +1,315 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Geraint Anderson Web Development</title>
-		<meta name="keywords" content="Geraint, Anderson, web, developer, development, html, html5, css, css3, javascript, portfolio">
-		<meta name="description" content="Online portfolio for Geraint Anderson">
-		<meta charset="UTF-8">
-		<link rel="stylesheet" type="text/css" href="site_theme.css">
-		<script>
-			!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
-		</script>
-		<script>
-			// Create a check for items in an array
-			Array.prototype.contains = function ( testItem ) {
-				for ( arrayItem in this ) {
-					if ( this[arrayItem] === testItem ) {
-						return true;
-					}
+<head>
+	<title>Geraint Anderson Web Development</title>
+	<meta name="keywords" content="Geraint, Anderson, web, developer, development, html, html5, css, css3, javascript, portfolio">
+	<meta name="description" content="Online portfolio for Geraint Anderson">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$('#top_navbar').load("top_nav.txt");
+		});
+	</script>
+	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+	<link rel="stylesheet" type="text/css" href="main.css">
+	<script>
+		// Create a check for items in an array
+		Array.prototype.contains = function ( testItem ) {
+			for ( arrayItem in this ) {
+				if ( this[arrayItem] === testItem ) {
+					return true;
 				}
-				return false;
 			}
-			
-			// Define all of the characters that can be encrypted.  
-			var characters = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"," "];
-			
-			// Define an array of the top 100 words used in the English Language
-			wordList = [
-				"the",
-				"be",
-				"to",
-				"of",
-				"and",
-				"a",
-				"in",
-				"that",
-				"have",
-				"I",
-				"it",
-				"for",
-				"not",
-				"on",
-				"with",
-				"he",
-				"as",
-				"you",
-				"do",
-				"at",
-				"this",
-				"but",
-				"his",
-				"by",
-				"from",
-				"they",
-				"we",
-				"say",
-				"her",
-				"she",
-				"or",
-				"an",
-				"will",
-				"my",
-				"one",
-				"all",
-				"would",
-				"there",
-				"their",
-				"what",
-				"so",
-				"up",
-				"out",
-				"if",
-				"about",
-				"who",
-				"get",
-				"which",
-				"go",
-				"me",
-				"when",
-				"make",
-				"can",
-				"like",
-				"time",
-				"no",
-				"just",
-				"him",
-				"know",
-				"take",
-				"people",
-				"into",
-				"year",
-				"your",
-				"good",
-				"some",
-				"could",
-				"them",
-				"see",
-				"other",
-				"than",
-				"then",
-				"now",
-				"look",
-				"only",
-				"come",
-				"its",
-				"over",
-				"think",
-				"also",
-				"back",
-				"after",
-				"use",
-				"two",
-				"how",
-				"our",
-				"work",
-				"first",
-				"well",
-				"way",
-				"even",
-				"new",
-				"want",
-				"because",
-				"any",
-				"these",
-				"give",
-				"day",
-				"most",
-				"us",
-			];
-			
-			
-			function caesarShift(mode,key,inText){
-				// This function performs a Caesar Shift by shifting the value of each letter in inText by the key.  Mode defines if the inText is being encrypted or decrypted.
-				var outText = "";
-				var upperCase = false;
-				var encryptedLetter = "";
-				
-				// Check the key is a number and set default key
-				if (key == ""){
-					key = 0;
-				} else if (isNaN(key) || key % 1 != 0 || key < 0 ){
-					alert("Key must be a positive integer number");
-					return;
-				}
-				
-				// Calculate the letter shift based on the mode
-				if (mode == "encrypt") {
-					// Shift the letters forward
-					var shiftKey = key;
-				} else if (mode == "decrypt") {
-					// Shift the letters back
-					var shiftKey = characters.length - (key%characters.length);
-				} else {
-					alert("ERROR: Invalid mode");
-					return;
-				}
-				
-				// Split the input text into individual letters
-				for ( i in inText ){
-					// Check if it's in the characters array, otherwise don't encrypt it
-					if ( characters.indexOf(inText[i].toLowerCase()) < 0 ){
-						// Append the character as it is.
-						outText = outText + inText[i];
-						// Move to the next letter
-						continue;
-					}
-					
-					// Check if it's upper case
-					if (inText[i] != inText[i].toLowerCase()) {
-						upperCase = true;
-					} else {
-						upperCase = false;
-					}
-					
-					// Work out it's lower case equivalent position in the characters array
-					var letterCode = characters.indexOf(inText[i].toLowerCase());
-					
-					// Work out the cypher position by adding the key
-					var encryptedPosition = (letterCode + parseInt(shiftKey))%characters.length;
-					
-					// Work out the shifted letter depending on if it is upper case or not
-					if (upperCase){
-						encryptedLetter = characters[encryptedPosition].toUpperCase();
-					} else {
-						encryptedLetter = characters[encryptedPosition];
-					}
-					
-					// Append the shifted letter to the output
-					outText = outText + encryptedLetter;
-				}
-				// Display the output
-				return outText;
-				
-			}
-			
-			function encrypt(){
-				// This function passes the parameters needed to encrypt the input text to the caesarShift function
-				var plainText = document.getElementById("plaintext").value;
-				var cipherKey = document.getElementById("cipherkey").value;
-				
-				// Display the output
-				document.getElementById("ciphertext").value = caesarShift("encrypt",cipherKey,plainText);
-				
-			}
-			
-			function decrypt(){
-				// This function passes the parameters needed to decrypt the input text to the caesarShift function
-				var cipherText = document.getElementById("ciphertext").value;
-				var cipherKey = document.getElementById("cipherkey").value;
-				
-				// Display the output
-				document.getElementById("plaintext").value = caesarShift("decrypt",cipherKey,cipherText);
-			}
-			
-			function crack(){
-				// This function cracks the Caesar cipher using brute force.
-				var cipherText = document.getElementById("ciphertext").value;
-				var shiftedText = ""
-				var results = [];
-				// Decrypt for each key value value
-				for (key=0;key<characters.length;key++){
-				//key = 0; // TEST ONLY
-					shiftedText = caesarShift("decrypt",key,cipherText);
-					
-					// Check each word in the shifted text to see if it is in the top 100 English words.
-					var shiftedWords = shiftedText.split(" "); // Should I be defining this var here or once at the start..? Lookup defining variables in a loop. 
-					wordCount = shiftedWords.length;
-					var englishCount = 0;
-					
-					for (i=0;i<shiftedWords.length;i++){
-						// Remove any special characters
-						word = shiftedWords[i].replace(/\.|!|'/gi, '');
-						//console.log(word);
-						if ( wordList.contains(word.toLowerCase())) {
-							englishCount++;
-						}
-						//console.log("i: " + i + " englishCount: " + englishCount);
-						results[key] = englishCount;
-						//console.log("key: " + key + " englishCount: " + englishCount);
-					}
-					
-					//console.log("final key is " + key);
-				}
-				
-				// Display the results
-				var outHtml = "<h3>Matched words per key</h3><table id='resultstable'><tr><th>Key</th><th>Number of matched words</th></tr>";
-				for ( j=0;j<key;j++) {
-					//console.log("j: " + j + ". Matched word count: " + results[j]);
-					//console.log("<tr><td>" + j + "</td><td>" + results[j] + "</td></tr>");
-					outHtml = outHtml + "<tr><td>" + j + "</td><td>" + results[j] + "</td></tr>";
-				}
-				outHtml = outHtml + "</table>"
-				document.getElementById("crackresults").innerHTML = outHtml;
-				
-				// Now decrypt with the key with the highest number of matched words.
-				cipherKey = results.indexOf(Math.max.apply( Math, results ));
-				console.log(cipherKey);
-				console.log(cipherText);
-				
-				document.getElementById("plaintext").value = caesarShift("decrypt",cipherKey,cipherText);
-			}
-		</script>
-		<style>
-			#resultstable{
-				border: solid 1px black;
-			}
-			#cipherform{
-				margin-left:10px;
-				margin-right:10px;
-			}
-			textarea{
-				margin:10px;
-				width:60%;
-			}
-		</style>
-	</head>
-	<body>
-		<div id="header">
-			<a href="index.html"><img id="signature" src="sig.gif" alt="Geraint Anderson signature logo"></a>
-			<div id="socialmedia">
-				<a id="linkedinprofile" href="http://uk.linkedin.com/pub/geraint-anderson/3a/b46/789" style="text-decoration:none;"><span style="font: 80% Arial,sans-serif; color:#0783B6;"><img src="https://static.licdn.com/scds/common/u/img/webpromo/btn_in_20x15.png" width="20" height="15" alt="View Geraint Anderson's LinkedIn profile" style="vertical-align:middle" border="0">View my Linked In profile</span></a><br>
-				<a id="twitterfollow" href="https://twitter.com/Geraint_TJ_A" class="twitter-follow-button" data-show-count="false">Follow @Geraint_TJ_A</a>
-			</div>
-		</div>
-		<div id="topbar">
-			<div id="topmenu">
-				<span class="topselect"><a href="index.html">Home</a></span><span class="topselect"><a href="biography.html">Biography</a></span><span class="topselect"><a href="cv.html">CV</a></span><span id="selected" class="topselect"><a href="portfolio.html">Portfolio</a></span>
-			</div>
-		</div>
-		<div id="container">
+			return false;
+		}
 		
-			<div id="sidebar">
-				<b>Menu</b><br>
-				<a href="portfolio.html">Portfolio Home</a><br>
-				<a href="caseconverter.html">Case Converter</a><br>
-				<a href="higherlower.html">Higher or Lower</a><br>
-				<a href="caesarcipher.html">Caesar's Cipher</a><br>
-				<!--<a href="importanturgent.html">Important Urgent List</a>-->
-			</div>
-			<div id="content">
-				<a id="twittershare" href="https://twitter.com/share" class="twitter-share-button" data-via="Geraint_TJ_A">Tweet</a>
-				<h2>Caesar's Cipher</h2>
-				<p>The Caesar Cipher is one of oldest and least secure methods of encryption.  This page uses JavaScript to encrypt the plain text according to the key.  By performing the encryption algorithm in reverse you can also decrypt the cipher text using the same key.</p>
-				<p>There are a number of pitfalls with this.  The position of upper case letters don't change and numbers are not encrypted making it easy to identify starts of words, names, the letter "I" e.t.c. which could give away enough information to quickly identify the key by eye.  By adding more characters to the character array the effect of these issues can be limited.  Better still would be to perform the shift on the ASCII value rather than supplying a character list, although due to the limited number of potential keys this cipher can still be cracked quickly with a brute force attack.</p>
-				<p>I have included code to decrypt the cipher text without the key.  This method tries each possible key and looks at the number of words in the decrypted text that match English words.  To reduce storage costs, bandwidth and processing I have only included a small dictionary making use of the fact that English speakers rarely have a very varied vocabulary.  <a href="http://www.oxforddictionaries.com/words/the-oec-facts-about-the-language">According to the <abbr title="Oxford English Corpus">OEC</abbr></a> the ten most common lemmas (base of a word) account for 25% of all words used in the <abbr title="Oxford English Corpus">OEC</abbr>.  I have used a slightly longer list consisting of the <a href="http://en.wikipedia.org/wiki/Most_common_words_in_English">100 most common English words</a> which account for about half of all written material.  Using small arrays like these means it would be easy and only need a small amount of storage and bandwidth to expand this to work for numerous languages.  When you crack the cipher text the table that is displayed shows the number of matched words from this limited dictionary.</p>
-				<form id="cipherform" onsubmit="return false">
-					Key: <input type="text" id="cipherkey" title="Enter an encryption key"><br><br>
-					Plain Text:<br><textarea id="plaintext" title="Plain Text"></textarea><br>
-					Cipher Text:<br><textarea id="ciphertext" title="Cipher Text"></textarea><br>
-					<input type="submit" value="Encrypt" onClick="encrypt()">
-					<input type="submit" value="Decrypt" onClick="decrypt()">
-					<input type="submit" value="Crack it" onClick="crack()"><br><br>
-				</form>
-				<div id="crackresults"></div>
-			</div>
-			<div id="footer">
-				Created by <a href="mailto:geraint@geraintanderson.com">Geraint Anderson</a>
-			</div>
+		// Define all of the characters that can be encrypted.  
+		var characters = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"," "];
+		
+		// Define an array of the top 100 words used in the English Language
+		wordList = [
+			"the",
+			"be",
+			"to",
+			"of",
+			"and",
+			"a",
+			"in",
+			"that",
+			"have",
+			"I",
+			"it",
+			"for",
+			"not",
+			"on",
+			"with",
+			"he",
+			"as",
+			"you",
+			"do",
+			"at",
+			"this",
+			"but",
+			"his",
+			"by",
+			"from",
+			"they",
+			"we",
+			"say",
+			"her",
+			"she",
+			"or",
+			"an",
+			"will",
+			"my",
+			"one",
+			"all",
+			"would",
+			"there",
+			"their",
+			"what",
+			"so",
+			"up",
+			"out",
+			"if",
+			"about",
+			"who",
+			"get",
+			"which",
+			"go",
+			"me",
+			"when",
+			"make",
+			"can",
+			"like",
+			"time",
+			"no",
+			"just",
+			"him",
+			"know",
+			"take",
+			"people",
+			"into",
+			"year",
+			"your",
+			"good",
+			"some",
+			"could",
+			"them",
+			"see",
+			"other",
+			"than",
+			"then",
+			"now",
+			"look",
+			"only",
+			"come",
+			"its",
+			"over",
+			"think",
+			"also",
+			"back",
+			"after",
+			"use",
+			"two",
+			"how",
+			"our",
+			"work",
+			"first",
+			"well",
+			"way",
+			"even",
+			"new",
+			"want",
+			"because",
+			"any",
+			"these",
+			"give",
+			"day",
+			"most",
+			"us",
+		];
+		
+		
+		function caesarShift(mode,key,inText){
+			// This function performs a Caesar Shift by shifting the value of each letter in inText by the key.  Mode defines if the inText is being encrypted or decrypted.
+			var outText = "";
+			var upperCase = false;
+			var encryptedLetter = "";
+			
+			// Check the key is a number and set default key
+			if (key == ""){
+				key = 0;
+			} else if (isNaN(key) || key % 1 != 0 || key < 0 ){
+				alert("Key must be a positive integer number");
+				return;
+			}
+			
+			// Calculate the letter shift based on the mode
+			if (mode == "encrypt") {
+				// Shift the letters forward
+				var shiftKey = key;
+			} else if (mode == "decrypt") {
+				// Shift the letters back
+				var shiftKey = characters.length - (key%characters.length);
+			} else {
+				alert("ERROR: Invalid mode");
+				return;
+			}
+			
+			// Split the input text into individual letters
+			for ( i in inText ){
+				// Check if it's in the characters array, otherwise don't encrypt it
+				if ( characters.indexOf(inText[i].toLowerCase()) < 0 ){
+					// Append the character as it is.
+					outText = outText + inText[i];
+					// Move to the next letter
+					continue;
+				}
+				
+				// Check if it's upper case
+				if (inText[i] != inText[i].toLowerCase()) {
+					upperCase = true;
+				} else {
+					upperCase = false;
+				}
+				
+				// Work out it's lower case equivalent position in the characters array
+				var letterCode = characters.indexOf(inText[i].toLowerCase());
+				
+				// Work out the cypher position by adding the key
+				var encryptedPosition = (letterCode + parseInt(shiftKey))%characters.length;
+				
+				// Work out the shifted letter depending on if it is upper case or not
+				if (upperCase){
+					encryptedLetter = characters[encryptedPosition].toUpperCase();
+				} else {
+					encryptedLetter = characters[encryptedPosition];
+				}
+				
+				// Append the shifted letter to the output
+				outText = outText + encryptedLetter;
+			}
+			// Display the output
+			return outText;
+			
+		}
+		
+		function encrypt(){
+			// This function passes the parameters needed to encrypt the input text to the caesarShift function
+			var plainText = document.getElementById("plaintext").value;
+			var cipherKey = document.getElementById("cipherkey").value;
+			
+			// Display the output
+			document.getElementById("ciphertext").value = caesarShift("encrypt",cipherKey,plainText);
+			
+		}
+		
+		function decrypt(){
+			// This function passes the parameters needed to decrypt the input text to the caesarShift function
+			var cipherText = document.getElementById("ciphertext").value;
+			var cipherKey = document.getElementById("cipherkey").value;
+			
+			// Display the output
+			document.getElementById("plaintext").value = caesarShift("decrypt",cipherKey,cipherText);
+		}
+		
+		function crack(){
+			// This function cracks the Caesar cipher using brute force.
+			var cipherText = document.getElementById("ciphertext").value;
+			var shiftedText = ""
+			var results = [];
+			// Decrypt for each key value value
+			for (key=0;key<characters.length;key++){
+			//key = 0; // TEST ONLY
+				shiftedText = caesarShift("decrypt",key,cipherText);
+				
+				// Check each word in the shifted text to see if it is in the top 100 English words.
+				var shiftedWords = shiftedText.split(" "); // Should I be defining this var here or once at the start..? Lookup defining variables in a loop. 
+				wordCount = shiftedWords.length;
+				var englishCount = 0;
+				
+				for (i=0;i<shiftedWords.length;i++){
+					// Remove any special characters
+					word = shiftedWords[i].replace(/\.|!|'/gi, '');
+					//console.log(word);
+					if ( wordList.contains(word.toLowerCase())) {
+						englishCount++;
+					}
+					//console.log("i: " + i + " englishCount: " + englishCount);
+					results[key] = englishCount;
+					//console.log("key: " + key + " englishCount: " + englishCount);
+				}
+				
+				//console.log("final key is " + key);
+			}
+			
+			// Display the results
+			var outHtml = "<h3>Matched words per key</h3><table id='resultstable'><tr><th>Key</th><th>Number of matched words</th></tr>";
+			for ( j=0;j<key;j++) {
+				//console.log("j: " + j + ". Matched word count: " + results[j]);
+				//console.log("<tr><td>" + j + "</td><td>" + results[j] + "</td></tr>");
+				outHtml = outHtml + "<tr><td>" + j + "</td><td>" + results[j] + "</td></tr>";
+			}
+			outHtml = outHtml + "</table>"
+			document.getElementById("crackresults").innerHTML = outHtml;
+			
+			// Now decrypt with the key with the highest number of matched words.
+			cipherKey = results.indexOf(Math.max.apply( Math, results ));
+			console.log(cipherKey);
+			console.log(cipherText);
+			
+			document.getElementById("plaintext").value = caesarShift("decrypt",cipherKey,cipherText);
+		}
+	</script>
+	<style>
+		#resultstable{
+			border: solid 1px black;
+		}
+		#cipherform{
+			margin-left:10px;
+			margin-right:10px;
+		}
+		textarea{
+			margin:10px;
+			width:60%;
+		}
+	</style>
+</head>
+<body>
+	<nav class="navbar navbar-default">
+		<div id="top_navbar" class="container-fluid">
 		</div>
-	</body>
+	</nav>
+	
+	<div class="container">
+		<h2>Caesar's Cipher</h2>
+		<p>The Caesar Cipher is one of oldest and least secure methods of encryption.  This page uses JavaScript to encrypt the plain text according to the key.  By performing the encryption algorithm in reverse you can also decrypt the cipher text using the same key.</p>
+		<p>There are a number of pitfalls with this.  The position of upper case letters don't change and numbers are not encrypted making it easy to identify starts of words, names, the letter "I" e.t.c. which could give away enough information to quickly identify the key by eye.  By adding more characters to the character array the effect of these issues can be limited.  Better still would be to perform the shift on the ASCII value rather than supplying a character list, although due to the limited number of potential keys this cipher can still be cracked quickly with a brute force attack.</p>
+		<p>I have included code to decrypt the cipher text without the key.  This method tries each possible key and looks at the number of words in the decrypted text that match English words.  To reduce storage costs, bandwidth and processing I have only included a small dictionary making use of the fact that English speakers rarely have a very varied vocabulary.  <a href="http://www.oxforddictionaries.com/words/the-oec-facts-about-the-language">According to the <abbr title="Oxford English Corpus">OEC</abbr></a> the ten most common lemmas (base of a word) account for 25% of all words used in the <abbr title="Oxford English Corpus">OEC</abbr>.  I have used a slightly longer list consisting of the <a href="http://en.wikipedia.org/wiki/Most_common_words_in_English">100 most common English words</a> which account for about half of all written material.  Using small arrays like these means it would be easy and only need a small amount of storage and bandwidth to expand this to work for numerous languages.  When you crack the cipher text the table that is displayed shows the number of matched words from this limited dictionary.</p>
+		<form id="cipherform" onsubmit="return false">
+			Key: <input type="text" id="cipherkey" title="Enter an encryption key"><br><br>
+			Plain Text:<br><textarea id="plaintext" title="Plain Text"></textarea><br>
+			Cipher Text:<br><textarea id="ciphertext" title="Cipher Text"></textarea><br>
+			<input type="submit" value="Encrypt" onClick="encrypt()">
+			<input type="submit" value="Decrypt" onClick="decrypt()">
+			<input type="submit" value="Crack it" onClick="crack()"><br><br>
+		</form>
+		<div id="crackresults"></div>
+		</div>
+	</div>
+
+	<div class="center-text">
+		<a id="twittershare" href="https://twitter.com/share" class="twitter-share-button" data-via="Geraint_TJ_A">Tweet</a>
+	</div>
+		<hr>
+		<div class="center-text">
+			Created by <a href="mailto:geraint@geraintanderson.com">Geraint Anderson</a>
+		</div>
+	</div>
+</body>
 </html>

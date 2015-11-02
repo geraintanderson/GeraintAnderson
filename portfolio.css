@@ -1,0 +1,39 @@
+.folio_tab {
+	padding: 20px 0;
+	text-align: center;
+}
+/*.folio_tab img {
+	height: 300px;
+	width: 300px;
+}*/
+
+.folio_tab > div > div{
+	padding: 10px;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	transition: 0.2s;
+}
+
+.folio_tab:hover{
+	margin-top: -10px;
+	border: 1px solid rgb(200, 200, 200);
+	box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 5px 2px;
+	background: rgba(200, 200, 200, 0.1);
+	transition: 0.5s;
+}
+
+/*.folio_tab > div:hover img {
+	border-radius: 50%;
+	
+	-webkit-transform: rotate(360deg);
+	-moz-transform: rotate(360deg);
+	-o-transform: rotate(360deg);
+	-ms-transform: rotate(360deg);
+	transform: rotate(360deg);
+	
+}*/
+
+.tech-thumb{
+	height: 150px;
+	width: 150px;
+}
