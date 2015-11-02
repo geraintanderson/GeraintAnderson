@@ -15,17 +15,7 @@
 		});
 	</script>
 	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-	<script src="caseconverter.js"></script>
 	<link rel="stylesheet" type="text/css" href="main.css">
-	<style>
-	textarea{
-		margin-left:5%;
-		margin-right:5%;
-		margin-bottom:10px;
-		width:90%
-		
-	}
-</style>
 </head>
 <body>
 	<nav class="navbar navbar-default">
@@ -34,20 +24,7 @@
 	</nav>
 	
 	<div class="container">
-		<a id="twittershare" href="https://twitter.com/share" class="twitter-share-button" data-via="Geraint_TJ_A">Tweet</a>
-		<h2>Case Converter</h2>
-		<p>Working in correspondence I sometimes see issues where the case of names or addresses is incorrect.  This could be down to call centre agents entering the data incorrectly or some process downstream destroying the case.  I wrote this simple case converter using <a href="caseconverter.js">JavaScript</a>.</p>
-		<!-- I'll upload a simplified awk and BASH version soon which have exceptions built in to handle things like double barrelled names or names with a capital somewhere other than the first character such as McNames.-->
-		<hr>
-		<form name='mainForm' onSubmit='return false'>
-			Conversion Text:<br><textarea id='inText' value='Enter text here' ></textarea><br>
-			Converted Text:<br><textarea id='outText'></textarea><br>
-			<input type='submit' value='convert' onClick='submitButton()'><br>
-			<input id='upperCaseRad' type='radio' name='caseOption' value='upperCase'>Upper Case
-			<input id='lowerCaseRad' type='radio' name='caseOption' value='lowerCase'>Lower Case
-			<input id='titleCaseRad' type='radio' name='caseOption' value='titleCase'>Title Case
-			<input id='standardCaseRad' type='radio' name='caseOption' value='standardCase'>Standard Case
-		</form>
+
 	</div>
 	
 	<div class="center-text">
