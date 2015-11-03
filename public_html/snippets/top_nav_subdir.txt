@@ -1,0 +1,22 @@
+<div class="navbar-header">
+	<!--a class="navbar-brand" href="#">Geraint Anderson</a-->
+	<!--img src="http://geraintanderson.com/sig.gif" id="ga_logo"-->
+</div>
+<div class="nav navbar-nav">
+	<li class="active"><a href="../index.html">Home</a></li>
+	<li><a href="../biography.html">Biography</a></li>
+	<li><a href="../cv.html">CV</a></li>
+	<li><a href="../portfolio.html">Portfolio</a></li>
+	<li class="dropdown">
+		<!--a class="dropdown-toggle" data-toggle="dropdown" href="portfolio.html">Portfolio<span class="caret"></span></a>
+		<ul class="dropdown-menu">
+			<li><a href="#">Main</a></li>
+			<li><a href="#">Snippets</a></li>
+			<li><a href="#">Notes</a></li>
+		</ul-->
+	</li>
+</div>
+<div class="nav navbar-nav navbar-right">
+	<li><a href="https://twitter.com/Geraint_TJ_A" class="twitter-follow-button" data-show-count="false">Follow @Geraint_TJ_A</a></li>
+	<li><a id="linkedinprofile" href="http://uk.linkedin.com/pub/geraint-anderson/3a/b46/789" style="text-decoration:none;"><span style="font: 80% Arial,sans-serif; color:#0783B6;"><img src="https://static.licdn.com/scds/common/u/img/webpromo/btn_in_20x15.png" width="20" height="15" alt="View Geraint Anderson's LinkedIn profile" style="vertical-align:middle" border="0">View my Linked In profile</span></a></li>
+</div>
