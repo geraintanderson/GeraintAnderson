@@ -1,0 +1,55 @@
+<h1>SAP (Systems Applications and Processes)</h1>
+<h2>Stack</h2>
+<p>There are two stacks: Java and ABAP.  The ABAP stack is most comonly used</p>
+<h2>EEC</h2>
+<p>EEC is the core SAP modules.  It contains sections that are common accross multiple business such as HR, Finance etc.  Normally ECC is purchased with an industry specific solution which is included in ECC.</p>
+<p>Industry solutions are included in EEC and are used in specific industries</p>
+<h2>IS-U (Industry Solutions for Utilities)</h2>
+<p>IS-U contain speciofic processes for utility companies including metering</p>
+<h2>CRM</h2>
+<p>SAP CRM contains 3 areas of functionality.  Channels are used to deliver this functionality to the customer.
+
+Diagram:
+Functionality | Channels             |
+````````````` | ````````             |
+Sales         | Interaction Centre   |
+Marketing     | Web Channel          | Customer
+Service       | Channel Partner      |
+
+
+SAP CRM Connects to SAP ECC via the CRM Middleware (Rather than using PI).  It also connects to SAP BI for reports.
+---------            ---------
+|SAP CRM|<---------->|SAP ECC|
+---------            ---------
+         \
+          \
+           _|
+             --------
+             |SAP BI|  (Diagram: One way arrow)
+             --------
+             
+             
+<h3>Users</h3>
+<p>Users interact with CRM using the Web Client UI.  Users include system administrators, business...  Web Client UI bundles the functionality for a business role.</p>
+<h3>Business Roles</h3>
+<p>Business Roles are roles in the organisation and include IC-AGENT and IC-UTIL</p>
+
+<h3>Interaction Centre</h3>
+
+<h4>Roles</h4>
+<p>AGENT, MANAGER</p>
+<p>The interaction centre supports 3 channels:</p>
+<p>Telephone: the customer dials the exchange.  The interaction centre forwards the call to an agent's computer and soft phone and can do things like pull the customers details up for that phone number</p>
+<p>Email: the customer emails the mail server.  The interaction centre then just dumps the email into an agent mailbox in the one to one email scenario.  Or ERMS (Email Response Management System) applies rules and does not need agents to work on the emails.</p>
+<p>Chat</p>
+
+<h2>CRM to IS-U Integration</h2>
+
+Diagram:
+
+CRM                     IS-U
+```                     ````
+Customer <----------->
+Utility Quote
+UItility Contract ---> Contract (ISU stuff e.g. billing, finance etc. is triggered off the back of this)
+
