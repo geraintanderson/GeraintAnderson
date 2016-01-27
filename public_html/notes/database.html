@@ -44,51 +44,47 @@ To store large files use gridfs to split it into chunks that fit in the database
 <p><strong>mongotop int</strong>Show the collections most in use and how the time is used</p>
 <p><strong>rs.slaveOk()</strong>Allows reading from a secondary</p>
 <h3>Query Operators</h3>
-Operator	Action
-$gt	Greater than
-$gte	Greater or equal to
-$lt	Less than
-$lte	Less than or equal to
-$exists	Shows if a document has a key
-$type	Fund BSON types e.g. string is type 2
-$regex	Perl style regular expression
-$or	Options given as an array e.g. { $or : [{},{}] }
-$and	Similar to Or but not often needed sue to multiple parameters on a single document
-$all	Match documents with all fields in the array
-$in [* How is this different to or *]	Match documents with any fields in the array
-$set	Update (or create) a specific field using the update method
-$unset	Remove a field and its value from a document
-$inc	Increment the value of s field used in the update method
-$pop()	Remove an element from the end (or beginning) of an array
-$push()	Add an element to the end of an array
-$pushAll()	Add numerous elements to the end of an array
-$pull()	Remove a specific aray element regardless of its position
-$pullAll()	Remove a number of specific array elements regardless of their positions
-$addToSet()	Adds the element to an array only if it not already present
-$elemMatch	Match an element witth at least one matching field
-$near	Used with geospacial arrays to find documents with the closest coordinates
-$geometry	Used with geospacial coordinates
-$maxDistance	Specify a maximum distange for geospacial coordinates
-$text	Used with text indexes
-$search	Match words in a string of text with text indexes.  Ignores punctuation, useless stop words like “the” and capitalisation eg. {$text : { $search : “cat” } }
-$meta	Used with text [* always *] to show the text score eg how good was the match eg. { $meta : “textScore” }
-	
-$project	1:1 document relationship.  Aggregation operator
-$match	n:1 document relationship.  Aggregation operator
-$group	n:1 document relationship.  Aggregation operator.  Set the output id
-$sort	1:1 document relationship.  Aggregation operator
-$skip	n:1 document relationship.  Aggregation operator
-$limit	n:1 document relationship.  Aggregation operator
-$unwind	1:n document relationship.  Aggregation operator.  Used to flatten out a document with an array by creating a new document for each array value.  It can cause the _id to be duplicated so be careful when using $out.
-$out	1:1 document relationship.  Aggregation operator
-$min	Aggregation expression
-$max	Aggregation expression
-$avg	Aggregation expression
-$sum	Aggregation expression.  Give the name of the field to sum its contents or just 1 to increase the count of 1 per match.
-$out	Redirect the result of an aggregation to a new collection.  Be careful because it destroys any existing collection with the same name.
-
-
-
+<p>Operator	Action</p>
+<p>$gt	Greater than</p>
+<p>$gte	Greater or equal to</p>
+<p>$lt	Less than</p>
+<p>$lte	Less than or equal to</p>
+<p>$exists	Shows if a document has a key</p>
+<p>$type	Fund BSON types e.g. string is type 2</p>
+<p>$regex	Perl style regular expression</p>
+<p>$or	Options given as an array e.g. { $or : [{},{}] }</p>
+<p>$and	Similar to Or but not often needed sue to multiple parameters on a single document</p>
+<p>$all	Match documents with all fields in the array</p>
+<p>$in [* How is this different to or *]	Match documents with any fields in the array</p>
+<p>$set	Update (or create) a specific field using the update method</p>
+<p>$unset	Remove a field and its value from a document</p>
+<p>$inc	Increment the value of s field used in the update method</p>
+<p>$pop()	Remove an element from the end (or beginning) of an array</p>
+<p>$push()	Add an element to the end of an array</p>
+<p>$pushAll()	Add numerous elements to the end of an array</p>
+<p>$pull()	Remove a specific aray element regardless of its position</p>
+<p>$pullAll()	Remove a number of specific array elements regardless of their positions</p>
+<p>$addToSet()	Adds the element to an array only if it not already present</p>
+<p>$elemMatch	Match an element witth at least one matching field</p>
+<p>$near	Used with geospacial arrays to find documents with the closest coordinates</p>
+<p>$geometry	Used with geospacial coordinates</p>
+<p>$maxDistance	Specify a maximum distange for geospacial coordinates</p>
+<p>$text	Used with text indexes</p>
+<p>$search	Match words in a string of text with text indexes.  Ignores punctuation, useless stop words like “the” and capitalisation eg. {$text : { $search : “cat” } }</p>
+<p>$meta	Used with text [* always *] to show the text score eg how good was the match eg. { $meta : “textScore” }</p>
+<p>$project	1:1 document relationship.  Aggregation operator</p>
+<p>$match	n:1 document relationship.  Aggregation operator</p>
+<p>$group	n:1 document relationship.  Aggregation operator.  Set the output id</p>
+<p>$sort	1:1 document relationship.  Aggregation operator</p>
+<p>$skip	n:1 document relationship.  Aggregation operator</p>
+<p>$limit	n:1 document relationship.  Aggregation operator</p>
+<p>$unwind	1:n document relationship.  Aggregation operator.  Used to flatten out a document with an array by creating a new document for each array value.  It can cause the _id to be duplicated so be careful when using $out.</p>
+<p>$out	1:1 document relationship.  Aggregation operator</p>
+<p>$min	Aggregation expression</p>
+<p>$max	Aggregation expression</p>
+<p>$avg	Aggregation expression</p>
+<p>$sum	Aggregation expression.  Give the name of the field to sum its contents or just 1 to increase the count of 1 per match.</p>
+<p>$out	Redirect the result of an aggregation to a new collection.  Be careful because it destroys any existing collection with the same name.</p>
 <p><strong></strong></p>
 <p><strong></strong></p>
 <p><strong></strong></p>

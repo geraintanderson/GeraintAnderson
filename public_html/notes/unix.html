@@ -5,10 +5,10 @@
   <tr><td>Command</td><td>Action</td></tr>
   <tr><td>date</td><td>Display the current date and time</td></tr>
   <tr><td><code>
-    date --date=”date and time”
-    date --date=”Feb 2 2014”
-    date --date=”30 days ago”
-    date --date=”next Monday”
+    date --date="date and time"
+    date --date="Feb 2 2014"
+    date --date="30 days ago"
+    date --date="next Monday"
     </code>
 </td><td>Take an input date and time and output it in date format</td></tr>
 <tr><td><code>date +%formatter</code></td><td>Format the date according to the list of formatters here</td></tr>
@@ -25,7 +25,7 @@
 <h3>Grep</h3>
 <p>Grep is used for searching the content of files.  It can be take string literals or regular expressions as search terms.</p>
 <p>Basic grep command.  Find <em>literal_string</em> in filename.  File name can be a pattern for searching multiple files.  <code>grep "literal_string" filename</code></p>
-<p>Match either pattern.  <code>grep –e “pattern” –e “pattern”</code></p>
+<p>Match either pattern.  <code>grep -e "pattern" -e "pattern"</code></p>
 <p><em>egrep</em> Extended grep.  A command that workslike <code>grep -E</code></p>
 <p><em>zgrep</em> Search in compressed files</p>
 <h4>Options</h4>
@@ -59,20 +59,20 @@
 <p><em>"[abcdef]"</em> Match any of the characters in the character class</p>
 <p><em>"[^abcdef]"</em> Match lines not contained in the character class</p>
 <p><em>"[a-f]"</em> Character class matching using ranges (single characters only).</p>
-<p><em>“[[:digit:]]”</em> Matches the digits 0-9</p>
-<p><em>“[[:alnum:]]”</em> Matches alpha numeric characters</p>
-<p><em>“[[:alpha:]]”</em> Matches alpha characters</p>
-<p><em>“[[:blank:]]”</em> Matches space or tab characters</p>
-<p><em>“expr\{m\}”</em> Exact m occurrence.  The expression is matched exactly m times.  The {} characters must be escaped.</p>
-<p><em>“expr\{m,\}”</em> M or more occurrences.  The expression is matched m or more times.  The {} characters must be escaped.</p>
-<p><em>“expr\{,m\}”</em> At least M occurrences.  The expression is matched at least m times.  The {} characters must be escaped.</p>
-<p><em>“expr\{m,n\}”</em> M to n occurrences.  The expression is matched a minimum of m times and a maximum of n.  The {} characters must be escaped.</p>
-<p><em>“expr1\|expr2”</em> Matches expr1 or expr2 .  The pipe character needs to be escaped.</p>
-<p><em>“expr1.*expr2”</em> Match expr1 and expr2, appearing in the same order on the same line</p>
-<p><em>“expr1.*expr2| expr2.*expr1”</em> Match expr1 and expr2, appearing in any order on the same line.  This can also be achieved by piping the results of a single grep command into another for the second condition e.g. grep “exp1” filename | grep “exp2”</p>
+<p><em>"[[:digit:]]"</em> Matches the digits 0-9</p>
+<p><em>"[[:alnum:]]"</em> Matches alpha numeric characters</p>
+<p><em>"[[:alpha:]]"</em> Matches alpha characters</p>
+<p><em>"[[:blank:]]"</em> Matches space or tab characters</p>
+<p><em>"expr\{m\}"</em> Exact m occurrence.  The expression is matched exactly m times.  The {} characters must be escaped.</p>
+<p><em>"expr\{m,\}"</em> M or more occurrences.  The expression is matched m or more times.  The {} characters must be escaped.</p>
+<p><em>"expr\{,m\}"</em> At least M occurrences.  The expression is matched at least m times.  The {} characters must be escaped.</p>
+<p><em>"expr\{m,n\}"</em> M to n occurrences.  The expression is matched a minimum of m times and a maximum of n.  The {} characters must be escaped.</p>
+<p><em>"expr1\|expr2"</em> Matches expr1 or expr2 .  The pipe character needs to be escaped.</p>
+<p><em>"expr1.*expr2"</em> Match expr1 and expr2, appearing in the same order on the same line</p>
+<p><em>"expr1.*expr2| expr2.*expr1"</em> Match expr1 and expr2, appearing in any order on the same line.  This can also be achieved by piping the results of a single grep command into another for the second condition e.g. grep “exp1” filename | grep “exp2”</p>
 <p><em>\b</em> Word boundary.  If placed at the beginning of an expression, only words starting with the expression will be matched.  It can also be placed at the end or both. <code>“\bexp”</code></p>
-<p><em>“\(expr\)”</em> Group a regular expression for using as a block, or for back references (See back reference)</p>
-<p><em>“\(expr\)\n”</em> Back references group regular expressions e.g. match the expression followed by any character, then match the expression again. <code>“\(expr\).\1”</code></p>
+<p><em>"\(expr\)"</em> Group a regular expression for using as a block, or for back references (See back reference)</p>
+<p><em>"\(expr\)\n"</em> Back references group regular expressions e.g. match the expression followed by any character, then match the expression again. <code>“\(expr\).\1”</code></p>
 <h3>Kill</h3>
 <p><em>Kill PID</em> Kill a job with ID PID</p>
 <p><strong>kill -9 `cat filename.txt`</strong> Force kill a job where the PID is stored in the file <em>filename.txt</em>.  See nohup for details about creating the file</p>
@@ -113,7 +113,7 @@
 <p><strong>dirs</strong>View the virtual stack without changing it.</p>
 <h3>Printing</h3>
 <p>Printf is used in preference to echo because it is more portable.  Echo is only portable if you omit all flags and escape characters</p>
-<p><strong>printf ‘%s%s’ “string1” “string2”</strong> Substitute %s with the strings in order</p>
+<p><strong>printf '%s%s' "string1" "string2"</strong> Substitute %s with the strings in order</p>
 <p><strong>%s %d %b</strong> Preformatter: string, Preformatter: decimal, Preformatter: binary</p>
 <p><strong>%ns</strong> Substitute for a string of length n characters</p>
 <p><strong>printf</strong> Outputs to the standard output stream (stdout) </p>
@@ -126,4 +126,3 @@
 <p><strong>\t</strong>Tab</p>
 <p><strong>\n</strong>New Line</p>
 <p><strong>^M</strong>Windows New line (carriage return)</p>
-

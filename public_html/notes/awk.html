@@ -1,11 +1,11 @@
 <h1>Awk</h1>
 <h2>Syntax</h2>
-<p><strong>#!/usr/bin/nawk –f</strong> First line of a directly executable NAWK program.  Without this line the command calling the script will need tell the shell that awk will run the script as below.  With this line the script can be called with only the script name and location.</p>
+<p><strong>#!/usr/bin/nawk -f</strong> First line of a directly executable NAWK program.  Without this line the command calling the script will need tell the shell that awk will run the script as below.  With this line the script can be called with only the script name and location.</p>
 <h2>Options</h2>
 <p><strong>-v name=value</strong> pass in a variable</p>
 <p><strong>-F"c"</strong> Set the delimiter to a character</p>
 <h2>Commands</h2>
-<p><strong>“UNIX command”|getline variable</strong> Run a unix command in awk</p>
+<p><strong>"UNIX command"|getline variable</strong> Run a unix command in awk</p>
 <p><strong>variable++ --variable variable1*=variable2 /= -= ^= %=</strong> Modify a variable value</p>
 <p><strong>/^$</strong>Blank line regular expression</p>
 <h2>Functions</h2>
@@ -13,7 +13,7 @@
 <p><strong>sub(/regexp/,str,var)</strong> substitute the first occurrence of regexp with str in the variable var.</p>
 <p><strong>gsub(/regexp/,str,var)</strong>substitute all occurrences of regexp with str in the variable var.</p>
 <p><strong>length(var)</strong> Returns the length of the variable</p>
-<p><strong>mktime(YYYY MM DD H M S)</strong> Change the date to Unix time for date calculations <code>mktime(“2014 08 21 0 0 0”)</code></p>
+<p><strong>mktime(YYYY MM DD H M S)</strong> Change the date to Unix time for date calculations <code>mktime("2014 08 21 0 0 0")</code></p>
 <p><strong>strftime("%c", time)</strong>Convert the date format from unix time to local format <code>strftime("%c", 1234567890)</code></p>
 <h3>Variables</h3>
 <p><strong>FS</strong>Field Separator</p>
