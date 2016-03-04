@@ -11,7 +11,7 @@
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	<script>
 		$(document).ready(function(){
-			$('#top_navbar').load("top_nav_subdir.txt");
+			$('#top_navbar').load("../top_nav_subdir.txt");
 		});
 	</script>
 	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
@@ -40,7 +40,7 @@
 			display: inline-block;
 		}
 	</style>
-	<script>			
+	<script>
 		function getFormFields(reset){
 			/* This creates a new line for the form to add a new member */
 			if (reset){
@@ -49,7 +49,7 @@
 				/* Get current number of members on the form */
 				var memberCount = $('.member_data').length;
 			}
-			
+
 			return '<span class="member_data"><input type="text" name="members[' + memberCount + '][name]"><input type="text" name="members[' + memberCount + '][date]"></span><br>';
 		}
 
@@ -57,7 +57,7 @@
 			$('#dynamic_form').html(getFormFields());
 			$('#form').submit(function(e){
 				e.preventDefault();
-				
+
 				$.post("http://geraintanderson.com/cgi-bin/complex_form.py",
 				$('#form').serialize(),
 				function(data, status){
@@ -77,7 +77,7 @@
 		<div id="top_navbar" class="container-fluid">
 		</div>
 	</nav>
-	
+
 	<div class="container">
 		<h2>Complex dynamic forms</h2>
 		<p>While working on an activity logging system I needed a way of grouping various fields on a form together.  This example needs to record which date goes with which date.  The convention is to name the form inputs similar to arrays.  Here the first line of inputs are named <code>members[0][name]</code> and <code>members[0][date]</code>.  The number for new inputs is easily incremented using JQuery to count the existing inputs and generate a new line.  A python script loops through the inputs in order and does any server side work (in this case not much).</p>
@@ -99,18 +99,18 @@
 def get_key_name(str):
 	first_pos = str.find('[')
 	return str[:first_pos]
- 
+
 def get_subkey_name(str):
     '''Used with lists of dictionaries only'''
     first_pos = str.rfind('[')
     last_pos = str.rfind(']')
     return str[first_pos:last_pos+1]
- 
+
 def get_key_index(str):
     first_pos = str.find('[')
     last_pos = str.find(']')
     return str[first_pos:last_pos+1]
- 
+
 def decode(idic):
     odic = {} # Initialise an empty dictionary
     # Scan all the top level keys
@@ -161,7 +161,7 @@ members = {[
 			</code></pre>
 		</div>
 	</div>
-	
+
 	<div class="center-text">
 		<a id="twittershare" href="https://twitter.com/share" class="twitter-share-button" data-via="Geraint_TJ_A">Tweet</a>
 	</div>

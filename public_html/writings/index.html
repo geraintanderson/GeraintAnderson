@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Geraint Anderson Web Development</title>
+	<meta name="keywords" content="Geraint, Anderson, web, developer, development, html, html5, css, css3, javascript, portfolio">
+	<meta name="description" content="Online portfolio for Geraint Anderson">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$('#top_navbar').load("../top_nav_subdir.txt");
+		});
+	</script>
+	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+	<link rel="stylesheet" type="text/css" href="main.css">
+	<link rel="stylesheet" type="text/css" href="writings.css">
+</head>
+<body>
+	<nav class="navbar navbar-default">
+		<div id="top_navbar" class="container-fluid">
+		</div>
+	</nav>
+
+	<div class="container">
+		<h1>Writings</h1>
+		<p>This is a collection of things I have written.  Somewhere between my notes and my portfolio.</p>
+		<h2>Topics</h2>
+
+		<div class="row folio_tab">
+			<div class="col-md-4">
+				<div>
+					<img src="http://www.w3schools.com/angular/pic_angular.jpg" alt="AngularJS" class="tech-thumb img-thumbnail">
+				</div>
+			</div>
+			<div class="col-md-8">
+				<div>
+					<h2>Angular UI Bootstrap</h2>
+					<p>Using the Twitter Bootstrap styles with Angular JS.</p>
+					<a href="angular_ui_bootstrap.html" class="btn btn-primary" title="See more">See more »</a>
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+
+	<div class="center-text">
+		<a id="twittershare" href="https://twitter.com/share" class="twitter-share-button" data-via="Geraint_TJ_A">Tweet</a>
+	</div>
+		<hr>
+		<div class="center-text">
+			Created by <a href="mailto:geraint@geraintanderson.com">Geraint Anderson</a>
+		</div>
+	</div>
+</body>
+</html>
