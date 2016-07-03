@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Geraint Anderson Web Development</title>
+	<meta name="keywords" content="Geraint, Anderson, web, developer, development, html, html5, css, css3, javascript, portfolio">
+	<meta name="description" content="Online portfolio for Geraint Anderson">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$('#top_navbar').load("../top_nav_subdir.txt");
+		});
+	</script>
+	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+	<link rel="stylesheet" type="text/css" href="../main.css">
+	<link rel="stylesheet" type="text/css" href="writings.css">
+</head>
+<body>
+	<nav class="navbar navbar-default">
+		<div id="top_navbar" class="container-fluid">
+		</div>
+	</nav>
+
+	<div class="container">
+		<a id="twittershare" href="https://twitter.com/share" class="twitter-share-button" data-via="Geraint_TJ_A">Tweet</a>
+		<h1>Bcrypt with Node.js</h1>
+    <p><em>First published on the 7th of July 2016</em></p>
+    <p>If you manage passwords you have probably come across the bcrypt hashing function.  There is a <a href="https://www.npmjs.com/package/bcrypt">handy bcrypt library</a> for Node.js which I'm looking at for this week's new technology.  Using bcrypt is simple.  In this article I'm going to show you how to hash and validate passwords.</p>
+
+    <h2>Why Not Just Store Passwords</h2>
+    <p>If your database is compromised it would be easy for an attacker to see the values you hold for your customers passwords.  If your passwords are stored in plaintext the attacker can easily see the password.  Even if you don't hold sensitive information bear in mind that <a href="https://nakedsecurity.sophos.com/2013/04/23/users-same-password-most-websites/">a lot of people use the same password for everything</a>.  So it's really important that passwords are hashed.  A hash is like one way encription.  Given the hash value, you cannot apply some algorithm to get at the original password. Unfortunatelly, hashing alone isn't enough because given a certain hashing algorithm a password will always generate the same hash.  Given a database of plaintext and hashes it's possible to quickly get at the plaintext value.  There have been some high profile <a href="http://wordsonaplatform.tumblr.com/post/24595070398/passwords-what-a-salt-is-and-what-linkedin"examples of big companies</a> losing hashed passwords that weren't salted.  <a href="https://crackstation.net/">These databases are readily available</a>.  To get around this problem we also add a salt.  There are numerous explanations of this process online so I'm not going to go into the details here.  Just remember to always salt the password.</p>
+    <h2>Synchronous Password Hashing and Validation</h2>
+    <p>So, how do we actually do this?  the bcrypt library for node.js gives you everything you need.  Install it with NPM.<p>
+    <pre>npm install bcrypt</pre>
+    <p>It comes with synchrenous and asynchronous functions.  Which one you choose will depend on your use case.  Start by generating the salt.</p>
+    <pre>var salt = bcrypt.genSaltSync(costFactor);</pre>
+    <p>The cost factor should be at least 12.  Next, this salt is used to hash the password.</p>
+    <pre>hash = bcrypt.hashSync(password, salt);</pre>
+    <p>And that's it.  The hash can be stored in the database instead of the original password.  But this on its own isn't very useful unless we can compare given passwords to the hash to validate them.  Bcrypt gives a compare function for this.</p>
+    <pre>bcrypt.compareSync(password, hash);</pre>
+    <p>Here's a simple node application that takes a pasword as a user input and hashed it.  It then takes another use input to compare.  Give it a go.</p>
+    <pre>
+var bcrypt = require('bcrypt');
+var hash;
+
+process.stdin.setEncoding('utf8');
+var salt = bcrypt.genSaltSync(12);
+
+process.stdin.resume();
+console.log('Choose a password');
+process.stdin.once('data', function(text) {
+  var password = text.slice(0, text.length -1);
+  hash = bcrypt.hashSync(password, salt);
+
+  // Authenticate
+  console.log('Enter your password');
+  process.stdin.on('data', function(text) {
+    var password = text.slice(0, text.length -1);
+    console.log('Password validation: ' + bcrypt.compareSync(password, hash));
+  });
+
+});</pre>
+    <h2>Asynch Bcrypt Function</h2>
+    <p>The asynchronous functions work in a similar way but use callbacks rather than returning a value.  The function names are the same, just lose the Sync part.  Here's an example of the demo application above, rewritten with the async functions.</p>
+    <pre>
+var bcrypt = require('bcrypt');
+var savedHash;
+
+process.stdin.setEncoding('utf8');
+process.stdin.resume();
+
+bcrypt.genSalt(12, function(err, salt) {
+  console.log('Choose a password');
+  process.stdin.once('data', function(text) {
+    var password = text.slice(0, text.length -1);
+    bcrypt.hash(password, salt, function(err, hash) {
+      savedHash = hash;
+
+      // Authenticate
+      console.log('Enter your password');
+      process.stdin.on('data', function(text) {
+        var password = text.slice(0, text.length -1);
+        bcrypt.compare(password, savedHash, function(err, res) {
+          console.log('Password validation: ' + res);
+        });
+      });
+
+    });
+  });
+});</pre>
+
+    <h2>Summary</h2>
+    <p>Passwords shoud be salted and hashed before being stored. The bcrypt module for node.js is a super simple way to do this.  As always, your feedback is appreciated.  My twitter handle is <a href="https://twitter.com/Geraint_TJ_A">Geraint_TJ_A</a>.</p>
+	</div>
+
+	<div class="center-text">
+		<a id="twittershare" href="https://twitter.com/share" class="twitter-share-button" data-via="Geraint_TJ_A">Tweet</a>
+	</div>
+		<hr>
+		<div class="center-text">
+			Created by <a href="mailto:geraint@geraintanderson.com">Geraint Anderson</a>
+		</div>
+	</div>
+
+  <script src="../libs/ui-bootstrap/1.2.1/ui-bootstrap-1.2.1.js"></script>
+</body>
+</html>
