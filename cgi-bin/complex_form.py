@@ -12,7 +12,7 @@ import cgi, cgitb, json
 print "Content-type: text/html\n\n"
 print "<html>"
 
-form = cgi.FieldStorage() 
+form = cgi.FieldStorage()
 
 member_name_arr = []
 member_date_arr = []
@@ -26,5 +26,5 @@ for i in range(member_count):
 	)
 
 # TO DO: Make a JSON object for this form
-	
+
 print "</html>"

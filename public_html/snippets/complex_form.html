@@ -58,8 +58,9 @@
 			$('#form').submit(function(e){
 				e.preventDefault();
 
-				$.post("http://geraintanderson.com/cgi-bin/complex_form.py",
-				$('#form').serialize(),
+				$.post(
+					"http://geraintanderson.com/cgi-bin/complex_form.py",
+					$('#form').serialize(),
 				function(data, status){
 					$('#member_info').html(data);
 					$('#dynamic_form').html(getFormFields(true));
