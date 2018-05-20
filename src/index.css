@@ -1,6 +1,7 @@
 body {
   margin: 0;
   font-family: sans-serif;
+  background-color: #EAEAEA;
 }
 
 /* Nav styles (start) */
@@ -11,6 +12,7 @@ body {
 nav {
   margin: 0 auto;
   border-bottom: 1px solid #B2B2B2;
+  background-color: white;
 }
 
 nav ul {
@@ -48,10 +50,10 @@ nav li.selected a {
   cursor: pointer;
 }
 #nav-toggle div {
-  width: 15px;
-  height: 3px;
   background-color: #727272;
+  height: 3px;
   margin: 3px 0;
+  width: 15px;
 }
 
 /* Flex styles for larger screens */
@@ -61,18 +63,19 @@ nav li.selected a {
   }
 
   nav {
-      width: 70%;
-      border-bottom: none;
+    border-bottom: none;
+    width: 80%;
   }
 
   nav ul {
     display: flex;
     justify-content: space-around;
+    margin: 0 20px;
   }
 
   nav li {
-    flex: 0 1 80px;
     border-bottom: 3px solid #B2B2B2;
+    flex: 0 1 80px;
   }
 
   nav li.selected {
@@ -80,9 +83,34 @@ nav li.selected a {
   }
 
   nav li.selected a {
-    max-width: none;
     border: none;
+    max-width: none;
   }
 }
-
 /* Nav styles (end) */
+
+/* Footer styles (start) */
+footer p {
+  text-align: center;
+  font-size: 14px;
+
+  /* margin: auto; */
+}
+/* Footer styles (end) */
+
+/* Article (main section) styles (start) */
+article {
+  /* width: 100%; */
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 10px;
+  background-color: white;
+  /* padding: 20px 10px; */
+}
+
+@media screen and (min-width: 786px) {
+  article {
+    width: 80%;
+  }
+}
+/* Article (main section) styles (end) */
