@@ -1,0 +1,99 @@
+section {
+  background-color: #BFBFBF;
+  border-radius: 15px;
+  padding: 5px 30px;
+  margin: 0 30px 30px 30px;
+}
+
+.preview {
+  box-sizing: border-box;
+  /* background-color: blue; */
+  text-align: center;
+  padding: 20px;
+  margin: 10px 0;
+}
+
+.preview img {
+  width: 100%;
+  border-radius: 50%;
+}
+
+.preview button {
+  background-color: white;
+  border: 2px solid blue;
+  border-radius: 5px;
+  color: black;
+  font-size: 26px;
+  transition-duration: 0.5s;
+  -webkit-transition-duration: 0.5s;
+  width: 200px;
+  /* width: 100px; */
+}
+
+.preview button:hover {
+  background-color: blue;
+  color: white;
+}
+
+.preview button span {
+  display: inline-block;
+  position: relative;
+}
+
+.preview button:hover {
+  padding-right: 30px;
+}
+
+/* .preview button span:after {
+  transition: 0.5s;
+} */
+
+.preview button:hover span:after {
+  content: '\00bb';
+  color: white;
+  position: absolute;
+  top: 0;
+  right: -20px;
+}
+
+/* @media screen and (min-width: 321px) {
+  #preview-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .preview {
+    flex: 0 1 48%;
+  }
+} */
+
+@media screen and (min-width: 500px) {
+  /* .preview {
+    background-color: red;
+  }
+
+  #preview-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .preview {
+    flex: 0 1 48%;
+  }
+}
+
+@media screen and (min-width: 786px) { */
+  #preview-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .preview {
+    flex: 0 1 40%;
+  }
+}
+
+/* TODO - It's aplitting to a new row too soon due to he button width. The best thing to do here is to add a new @media rule that will force the display to only show one item per row for a slightly bigger screen size */

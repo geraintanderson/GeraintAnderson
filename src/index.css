@@ -29,6 +29,10 @@ nav a {
   color: #727272;
 }
 
+nav a:hover {
+  color: black;
+}
+
 nav li.selected a {
   max-width: 80px;
   margin: 0 auto;
@@ -102,11 +106,17 @@ footer p {
 article {
   /* width: 100%; */
   box-sizing: border-box;
+  /* box-sizing: content-box; */
   margin: 0 auto;
-  padding: 10px;
+  padding: 50px 10px;
   background-color: white;
   /* padding: 20px 10px; */
 }
+/* .wrapper{
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+} */
 
 @media screen and (min-width: 786px) {
   article {
