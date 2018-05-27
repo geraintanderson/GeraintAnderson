@@ -7,7 +7,11 @@ srcDir="src"
 outDir="public_html"
 
 # Clear existing files
-rm ${outDir}/*
+rm -r ${outDir}/*
+
+# Create public images directory
+mkdir ${outDir}/images
+cp ${srcDir}/images/* ${outDir}/images
 
 # Copy global styles and scripts
 cp ${srcDir}/index.js ${srcDir}/index.css ${srcDir}/favicon.ico ${outDir}/
