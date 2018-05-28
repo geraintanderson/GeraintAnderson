@@ -24,7 +24,9 @@ cp ${srcDir}/index/homepage.css ${outDir}/homepage.css
 
 # Building the profile page
 cat ${srcDir}/header.html > ${outDir}/profile.html
+echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"profile.css\">" >> ${outDir}/profile.html
 cat ${srcDir}/nav-bar.html ${srcDir}/profile/profile.html ${srcDir}/footer.html >> ${outDir}/profile.html
+cp ${srcDir}/profile/profile.css ${outDir}/profile.css
 
 # Building the CV
 cat ${srcDir}/header.html > ${outDir}/cv.html
