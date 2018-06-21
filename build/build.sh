@@ -9,9 +9,11 @@ outDir="public_html"
 # Clear existing files
 rm -r ${outDir}/*
 
-# Create public images directory
+# Create public images and assets directory
 mkdir ${outDir}/images
+mkdir ${outDir}/assets
 cp ${srcDir}/images/* ${outDir}/images
+cp ${srcDir}/assets/* ${outDir}/assets
 
 # Copy global styles and scripts
 cp ${srcDir}/index.js ${srcDir}/index.css ${srcDir}/favicon.ico ${outDir}/
@@ -30,7 +32,9 @@ cp ${srcDir}/profile/profile.css ${outDir}/profile.css
 
 # Building the CV
 cat ${srcDir}/header.html > ${outDir}/cv.html
+echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"cv.css\">" >> ${outDir}/cv.html
 cat ${srcDir}/nav-bar.html ${srcDir}/cv/cv.html ${srcDir}/footer.html >> ${outDir}/cv.html
+cp ${srcDir}/cv/cv.css ${outDir}/cv.css
 
 # Building the portfolio page
 cat ${srcDir}/header.html > ${outDir}/portfolio.html
