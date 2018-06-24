@@ -40,6 +40,6 @@ cp ${srcDir}/cv/cv.css ${outDir}/cv.css
 cat ${srcDir}/header.html > ${outDir}/portfolio.html
 cat ${srcDir}/nav-bar.html ${srcDir}/portfolio/portfolio.html ${srcDir}/footer.html >> ${outDir}/portfolio.html
 
-# Building the writings page
-cat ${srcDir}/header.html > ${outDir}/writings.html
-cat ${srcDir}/nav-bar.html ${srcDir}/writings/writings.html ${srcDir}/footer.html >> ${outDir}/writings.html
+# Building the articles page
+cat ${srcDir}/header.html > ${outDir}/articles.html
+cat ${srcDir}/nav-bar.html ${srcDir}/articles/articles.html ${srcDir}/footer.html >> ${outDir}/articles.html
