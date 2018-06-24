@@ -42,4 +42,13 @@ cat ${srcDir}/nav-bar.html ${srcDir}/portfolio/portfolio.html ${srcDir}/footer.h
 
 # Building the articles page
 cat ${srcDir}/header.html > ${outDir}/articles.html
+echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"articles.css\">" >> ${outDir}/articles.html
 cat ${srcDir}/nav-bar.html ${srcDir}/articles/articles.html ${srcDir}/footer.html >> ${outDir}/articles.html
+cp ${srcDir}/articles/articles.css ${outDir}/articles.css
+
+# Building the individual articles
+
+cat ${srcDir}/header.html > ${outDir}/tabbed-box-component.html
+echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"tabbed-box-component.css\">" >> ${outDir}/tabbed-box-component.html
+cat ${srcDir}/nav-bar.html ${srcDir}/articles/tabbed-box-component.html ${srcDir}/footer.html >> ${outDir}/tabbed-box-component.html
+cp ${srcDir}/articles/tabbed-box-component.css ${outDir}/tabbed-box-component.css

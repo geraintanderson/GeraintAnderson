@@ -5,6 +5,10 @@ body {
   color: #000628;
 }
 
+code {
+  white-space: pre-wrap;
+}
+
 /* Nav styles (start) */
 .hidden {
   display: none;

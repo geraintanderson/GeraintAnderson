@@ -1,0 +1,61 @@
+<h1>Tabbed Box Component</h1>
+<section>
+  <p>I'm going to be building a reactive tabbed box component, inspired by the <a href="https://www.co-operativebank.co.uk/business">Co-op Bank business customer selector</a>. There's a working demo <a href="https://geraintanderson.github.io/tabbed-box-component/">here</a> which I've hooked into an API to show the content, but this article will only deal with the styling as the API requests is a different topic.</p>
+
+  <h2>Getting Started</h2>
+  <p>Like most menus, we should be semantically accurate and create a list. Afterall, this is a list of options.</p>
+
+  <code>
+    &lt;ul class=&quot;tab-wrapper&quot;&gt;
+    &nbsp;&lt;li&gt;Option one&lt;/li&gt;
+    &nbsp;&lt;li&gt;Second selection item&lt;/li&gt;
+    &nbsp;&lt;li&gt;Selector #3&lt;/li&gt;
+    &nbsp;&lt;li&gt;The final option in the list&lt;/li&gt;
+    &lt;/ul&gt;
+  </code>
+
+  <p>Next, I'll apply some CSS to remove the list formatting and add some colour. The borders between elements will appear thicker as there will be two adjacent borders. There are a few ways to overcome this but the easiest is to set the border between elements to have a width of half the other borders. The first and last element will need to have their borders set to be thicker to account for the lack of a double border. The pseudo elements are used for this, and also for adding a hover effect.</p>
+
+  <code>
+    .tab-wrapper-one {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .tab-wrapper-one li {
+      border-style: solid;
+      border-color: #00B5E4;
+      background-color: white;
+      padding: 20px 15px;
+      border-width: 1px 2px;
+      cursor: pointer;
+    }
+
+    .tab-wrapper-one li:first-child {
+      border-top: 2px solid #00B5E4;
+      border-radius: 15px 15px 0 0;
+    }
+
+    .tab-wrapper-one li:last-child {
+      border-bottom: 2px solid #00B5E4;
+      border-radius: 0 0 15px 15px;
+    }
+
+    .tab-wrapper-one li:hover {
+      background-color: #1acdff;
+      color: #e6f9ff;
+    }
+  </code>
+
+  <h2>Selecting the Element</h2>
+  <p>----- Add some info about the JavaScript code required to select the element..</p>
+
+
+  <ul class="tab-wrapper-one">
+    <li>Option one</li>
+    <li>Second selection item</li>
+    <li>Selector #3</li>
+    <li>The final option in the list</li>
+  </ul>
+
+</section>
