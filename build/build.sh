@@ -50,5 +50,8 @@ cp ${srcDir}/articles/articles.css ${outDir}/articles.css
 
 cat ${srcDir}/header.html > ${outDir}/tabbed-box-component.html
 echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"tabbed-box-component.css\">" >> ${outDir}/tabbed-box-component.html
-cat ${srcDir}/nav-bar.html ${srcDir}/articles/tabbed-box-component.html ${srcDir}/footer.html >> ${outDir}/tabbed-box-component.html
+cat ${srcDir}/nav-bar.html ${srcDir}/articles/tabbed-box-component.html >> ${outDir}/tabbed-box-component.html
+echo "<script src=\"tabbed-box-component.js\"></script>" >> ${outDir}/tabbed-box-component.html
+cat ${srcDir}/footer.html >> ${outDir}/tabbed-box-component.html
 cp ${srcDir}/articles/tabbed-box-component.css ${outDir}/tabbed-box-component.css
+cp ${srcDir}/articles/tabbed-box-component.js ${outDir}/tabbed-box-component.js

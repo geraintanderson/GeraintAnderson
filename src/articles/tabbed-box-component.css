@@ -1,3 +1,4 @@
+/* Demo 1 */
 .tab-wrapper-one {
   list-style-type: none;
   padding: 0;
@@ -25,4 +26,40 @@
 .tab-wrapper-one li:hover {
   background-color: #1acdff;
   color: #e6f9ff;
+}
+
+/* Demo 2 */
+.tab-wrapper-two {
+  list-style-type: none;
+  padding: 0;
+}
+
+.tab-wrapper-two li {
+  border-style: solid;
+  border-color: #00B5E4;
+  background-color: white;
+  padding: 20px 15px;
+  border-width: 1px 2px;
+  cursor: pointer;
+}
+
+.tab-wrapper-two li:first-child {
+  border-top: 2px solid #00B5E4;
+  border-radius: 15px 15px 0 0;
+}
+
+.tab-wrapper-two li:last-child {
+  border-bottom: 2px solid #00B5E4;
+  border-radius: 0 0 15px 15px;
+}
+
+.tab-wrapper-two li:not(.selected):hover {
+  background-color: #1acdff;
+  color: #e6f9ff;
+}
+
+.tab-wrapper-two .selected {
+  background-color: #00B5E4;
+  color: white;
+  position: relative;
 }

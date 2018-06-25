@@ -1,6 +1,6 @@
 <h1>Tabbed Box Component</h1>
 <section>
-  <p>I'm going to be building a reactive tabbed box component, inspired by the <a href="https://www.co-operativebank.co.uk/business">Co-op Bank business customer selector</a>. There's a working demo <a href="https://geraintanderson.github.io/tabbed-box-component/">here</a> which I've hooked into an API to show the content, but this article will only deal with the styling as the API requests is a different topic.</p>
+  <p>I'm going to be building a responsive tabbed box component, inspired by the <a href="https://www.co-operativebank.co.uk/business">Co-op Bank business customer selector</a>. There's a working demo <a href="https://geraintanderson.github.io/tabbed-box-component/">here</a> which I've hooked into an API to show the content, but this article will only deal with the styling as the API requests is a different topic.</p>
 
   <h2>Getting Started</h2>
   <p>Like most menus, we should be semantically accurate and create a list. Afterall, this is a list of options.</p>
@@ -47,15 +47,65 @@
     }
   </code>
 
-  <h2>Selecting the Element</h2>
-  <p>----- Add some info about the JavaScript code required to select the element..</p>
-
-
   <ul class="tab-wrapper-one">
     <li>Option one</li>
     <li>Second selection item</li>
     <li>Selector #3</li>
     <li>The final option in the list</li>
   </ul>
+
+  <h2>Selecting the Element</h2>
+  <p>We want to highlight the selected element. This can be done by adding a class to the element when it's clicked. I've added some styles so we can see which one is selected. I've also removed the hover styles on the selected element so we get the instant style change when it's clicked. Thi is one using the not pseudo class.</p>
+
+  <code>
+  .tab-wrapper li:not(.selected):hover {
+    background-color: #1acdff;
+    color: #e6f9ff;
+  }
+
+  .tab-wrapper .selected {
+    background-color: #00B5E4;
+    color: white;
+    position: relative;
+  }
+  </code>
+
+  <p>I've added an id to the list which I will use to select it. Using JavaScript I can add a click handler to each list item. It's important to do this by iterating over all the items in the list because we want it to work if we add new items without updating the code. Unfortunatelly, the Element.children attribute is not an array so the array methods such as forEach don't work with it. It is possible to create an array using the Array.from method however. An alternative approach would be to use a for loop to iterate directly.</p>
+
+  <p>Before adding the selected class, I remove the selected class from all elements in the component using a simple replace with a regular expression.</p>
+
+  <code>
+    (function () {
+      window.onload = function () {
+
+        const tabComponent = document.getElementById('tab-component-two')
+        const tabItems = Array.from(tabComponent.children)
+
+        const clearSelectedClasses = function () {
+          tabItems.forEach(elem =&gt; {
+            elem.className = elem.className.replace(/\bselected\b/g, '')
+          })
+        }
+
+        tabItems
+        .forEach(elem =&gt; elem.onclick = function () {
+          clearSelectedClasses()
+          elem.classList.add('selected')
+        })
+
+      }
+    })()
+  </code>
+
+  <p>This is how it looks right now.</p>
+  <ul class="tab-wrapper-two" id="tab-component-two">
+    <li>Option one</li>
+    <li>Second selection item</li>
+    <li>Selector #3</li>
+    <li>The final option in the list</li>
+  </ul>
+
+  <!-- TODO Next - Make it responsive using flexbox... -->
+
 
 </section>
