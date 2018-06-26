@@ -1,6 +1,6 @@
 <h1>Tabbed Box Component</h1>
 <section>
-  <p>I'm going to be building a responsive tabbed box component, inspired by the <a href="https://www.co-operativebank.co.uk/business">Co-op Bank business customer selector</a>. There's a working demo <a href="https://geraintanderson.github.io/tabbed-box-component/">here</a> which I've hooked into an API to show the content, but this article will only deal with the styling as the API requests is a different topic.</p>
+  <p>I'm going to be building a responsive tabbed box component, inspired by the <a href="https://www.co-operativebank.co.uk/business">Co-op Bank business customer selector</a>. There's a working demo <a href="https://geraintanderson.github.io/tabbed-box-component/">here</a> which I've hooked into an API to show the content, but this article will only deal with the styling as the API requests is a different topic. I'm not going to use any frameworks or libraries - just vanilla HTML, CSS and JavaScript.</p>
 
   <h2>Getting Started</h2>
   <p>Like most menus, we should be semantically accurate and create a list. Afterall, this is a list of options.</p>
@@ -105,7 +105,95 @@
     <li>The final option in the list</li>
   </ul>
 
-  <!-- TODO Next - Make it responsive using flexbox... -->
+  <h2>Responsive layout</h2>
+  <p>At the moment, the component stacks the options vertically. This is the behaviour we want on small screens but when the screen is wide enough we want to show them in a row. To do this, I'll use flexbox. I only want to apply the additional styles above a specified screen width, so I will use a css media query for that. By making the display type flex, the list will be styled as a flexbox. Setting the flex propery on the list items is a short hand way of setting the flex grow (the rate at which the element will grow to fill the space), flex shrink (the rate at which the element will shrink to fill the space) and flex basis (the starting size of the element). As these values are the same on each list item, they will all end up the same size.</p>
 
+  <code>
+    @media screen and (min-width: 768px) {
+      .tab-wrapper-three {
+        display: flex;
+      }
 
+      .tab-wrapper-three li {
+        flex: 1 1 150px;
+      }
+    }
+  </code>
+
+  <p>I also need to clean up some of the styles I applied to the ends as the tab options join along different edges. The following styles are also applied for larger screens.</p>
+
+  <code>
+      .tab-wrapper-three li {
+        border-width: 2px 1px;
+      }
+
+      .tab-wrapper-three li:first-child {
+        border-left: 2px solid #00B5E4;
+        border-radius: 15px 0 0 15px;
+      }
+
+      .tab-wrapper-three li:last-child {
+        border-right: 2px solid #00B5E4;
+        border-radius: 0 15px 15px 0;
+      }
+  </code>
+
+  <ul class="tab-wrapper-three" id="tab-component-three">
+    <li>Option one</li>
+    <li>Second selection item</li>
+    <li>Selector #3</li>
+    <li>The final option in the list</li>
+  </ul>
+
+  <h2>Centering the content</h2>
+  <p>Almost there, but I want to center the text in each tab. The content can be centered horizontally by adding <code>text-align: center</code> to the list item elements. The content is not centred vertically however. This only becomes apparant when you scale the page until some elements have content that wraps onto a new line and others don't. As we're already using flexbox, we can use it for this too. Flex containers can hold other flex containers, so I will give the list items a display property of flex.</p>
+
+  <code>
+    .tab-wrapper li {
+      flex: 1 1 150px;
+      border-width: 2px 1px;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </code>
+
+  <ul class="tab-wrapper-four" id="tab-component-four">
+    <li>Option one</li>
+    <li>Second selection item</li>
+    <li>Selector #3</li>
+    <li>The final option in the list</li>
+  </ul>
+
+  <h2>Triangle under selected element</h2>
+  <p>On the wide views I'm going to add an arrow under the selected box. This can be done by adding an empty div after the list item using the after pseudo element. I'm using a trick where a border around an element is joined at 45 degree angles. By only making one of these borders visible, it will appear as a triangle.</p>
+
+  <code>
+    .tab-wrapper-five li.selected:after {
+      content: ' ';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -15px;
+      border-width: 15px;
+      border-style: solid;
+      border-color: #00B5E4 transparent transparent transparent;
+    }
+  </code>
+
+  <ul class="tab-wrapper-five" id="tab-component-five">
+    <li>Option one</li>
+    <li>Second selection item</li>
+    <li>Selector #3</li>
+    <li>The final option in the list</li>
+  </ul>
+
+  <h2>Conclusion</h2>
+  <p>This is a perfect use case for the flexbox where items are positioned in one dimension. It also allows a responsive design to be built easily where the elements will resize according to the page width. Using the media query allows a complete different set of CSS properties to be set for large and small screen sizes. I've used this to change the layout on mobile devices where the component should stack the options vertically instead.</p>
+  <p>You can see the code for a complete and working version <a href="https://geraintanderson.github.io/tabbed-box-component/">here</a>.</p>
+
+  <!-- TODO: Improve the code in my repo to match the style used here. Link it from here but I need to clean it up as it's not currently showcasing the code I've written on this page. -->
+  <!-- TODO: Add Discuss -->
+  <!-- TODO Add some CSS to style the code snippets better... -->
 </section>
