@@ -1,6 +1,7 @@
 <h1>Tabbed Box Component</h1>
+<span>Fist Published: 26th June 2018</span>
 <section>
-  <p>I'm going to be building a responsive tabbed box component, inspired by the <a href="https://www.co-operativebank.co.uk/business">Co-op Bank business customer selector</a>. There's a working demo <a href="https://geraintanderson.github.io/tabbed-box-component/">here</a> which I've hooked into an API to show the content, but this article will only deal with the styling as the API requests is a different topic. I'm not going to use any frameworks or libraries - just vanilla HTML, CSS and JavaScript.</p>
+  <p>I'm going to be building a responsive tabbed box component, inspired by the <a href="https://www.co-operativebank.co.uk/business">Co-op Bank business customer selector</a>. I'm not going to use any frameworks or libraries - just vanilla HTML, CSS and JavaScript.</p>
 
   <h2>Getting Started</h2>
   <p>Like most menus, we should be semantically accurate and create a list. Afterall, this is a list of options.</p>
@@ -191,9 +192,117 @@
 
   <h2>Conclusion</h2>
   <p>This is a perfect use case for the flexbox where items are positioned in one dimension. It also allows a responsive design to be built easily where the elements will resize according to the page width. Using the media query allows a complete different set of CSS properties to be set for large and small screen sizes. I've used this to change the layout on mobile devices where the component should stack the options vertically instead.</p>
-  <p>You can see the code for a complete and working version <a href="https://geraintanderson.github.io/tabbed-box-component/">here</a>.</p>
+  <p>I've included the full code below.</p>
 
-  <!-- TODO: Improve the code in my repo to match the style used here. Link it from here but I need to clean it up as it's not currently showcasing the code I've written on this page. -->
+  <h3>HTML</h3>
+  <code>
+    &lt;ul class=&quot;tab-wrapper&quot; id=&quot;tab-component&quot;&gt;
+      &lt;li&gt;Option one&lt;/li&gt;
+      &lt;li&gt;Second selection item&lt;/li&gt;
+      &lt;li&gt;Selector #3&lt;/li&gt;
+      &lt;li&gt;The final option in the list&lt;/li&gt;
+    &lt;/ul&gt;
+  </code>
+
+  <h3>CSS</h3>
+  <code>
+    .tab-wrapper {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .tab-wrapper li {
+      border-style: solid;
+      border-color: #00B5E4;
+      background-color: white;
+      padding: 20px 15px;
+      border-width: 1px 2px;
+      cursor: pointer;
+    }
+
+    .tab-wrapper li:first-child {
+      border-top: 2px solid #00B5E4;
+      border-radius: 15px 15px 0 0;
+    }
+
+    .tab-wrapper li:last-child {
+      border-bottom: 2px solid #00B5E4;
+      border-radius: 0 0 15px 15px;
+    }
+
+    .tab-wrapper li:not(.selected):hover {
+      background-color: #1acdff;
+      color: #e6f9ff;
+    }
+
+    .tab-wrapper .selected {
+      background-color: #00B5E4;
+      color: white;
+      position: relative;
+    }
+
+    @media screen and (min-width: 768px) {
+      .tab-wrapper {
+        display: flex;
+      }
+
+      .tab-wrapper li {
+        flex: 1 1 150px;
+        border-width: 2px 1px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .tab-wrapper li:first-child {
+        border-left: 2px solid #00B5E4;
+        border-radius: 15px 0 0 15px;
+      }
+
+      .tab-wrapper li:last-child {
+        border-right: 2px solid #00B5E4;
+        border-radius: 0 15px 15px 0;
+      }
+
+
+      .tab-wrapper li.selected:after {
+        content: ' ';
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin-left: -15px;
+        border-width: 15px;
+        border-style: solid;
+        border-color: #00B5E4 transparent transparent transparent;
+      }
+    }
+  </code>
+
+  <h3>JavaScript</h3>
+  <code>
+    (function () {
+      window.onload = function () {
+
+        const tabComponent = document.getElementById('tab-component-two')
+        const tabItems = Array.from(tabComponent.children)
+
+        const clearSelectedClasses = function () {
+          tabItems.forEach(elem =&gt; {
+            elem.className = elem.className.replace(/\bselected\b/g, '')
+          })
+        }
+
+        tabItems
+        .forEach(elem =&gt; elem.onclick = function () {
+          clearSelectedClasses()
+          elem.classList.add('selected')
+        })
+
+      }
+    })()
+  </code>
+
   <!-- TODO: Add Discuss -->
-  <!-- TODO Add some CSS to style the code snippets better... -->
+  <!-- TODO Add some CSS to style the code snippets better. See https://highlightjs.org -->
 </section>
