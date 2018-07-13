@@ -14,6 +14,6 @@ window.addEventListener('load', function () {
 
   var elem = document.getElementById(elemId)
   if (elem) {
-    classList.add('selected')
+    elem.classList.add('selected')
   }
 })

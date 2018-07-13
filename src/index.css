@@ -6,7 +6,15 @@ body {
 }
 
 code {
+  margin: 20px 50px;
+  border: 2px solid #727272;
+  border-radius: 5px;
+  background-color: #e8e3cc;
   white-space: pre-wrap;
+  overflow-y: scroll;
+  display: block;
+  max-height: 250px;
+  font-family: monospace;
 }
 
 /* Nav styles (start) */
@@ -129,3 +137,8 @@ article {
   }
 }
 /* Article (main section) styles (end) */
+
+.article-date-stamp {
+  color: #727272;
+  font-size: 0.8rem;
+}
