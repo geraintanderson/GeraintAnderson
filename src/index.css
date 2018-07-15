@@ -1,20 +1,20 @@
 body {
-  margin: 0;
-  font-family: sans-serif;
   background-color: #e8e3cc;
   color: #000628;
+  font-family: sans-serif;
+  margin: 0;
 }
 
 code {
-  margin: 20px 50px;
+  background-color: #e8e3cc;
   border: 2px solid #727272;
   border-radius: 5px;
-  background-color: #e8e3cc;
-  white-space: pre-wrap;
-  overflow-y: scroll;
   display: block;
-  max-height: 250px;
   font-family: monospace;
+  margin: 20px 50px;
+  max-height: 250px;
+  overflow-y: scroll;
+  white-space: pre-wrap;
 }
 
 /* Nav styles (start) */
@@ -23,9 +23,9 @@ code {
 }
 
 nav {
-  margin: 0 auto;
-  border-bottom: 1px solid #B2B2B2;
   background-color: white;
+  border-bottom: 1px solid #B2B2B2;
+  margin: 0 auto;
 }
 
 nav ul {

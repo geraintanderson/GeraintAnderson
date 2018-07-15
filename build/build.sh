@@ -1,4 +1,5 @@
 #!/bin/bash
+# TODO Use node to build a builder instead, and create a function that accepts an out path, list of html, css and JS and builds the file. Then I just call that once for each file instead.
 # Used to generate the content. Run this from the application root directory.
 echo "Building the static pages"
 
@@ -12,6 +13,7 @@ rm -r ${outDir}/*
 # Create public images and assets directory
 mkdir ${outDir}/images
 mkdir ${outDir}/assets
+mkdir ${outDir}/articles
 cp ${srcDir}/images/* ${outDir}/images
 cp ${srcDir}/assets/* ${outDir}/assets
 
@@ -48,10 +50,10 @@ cp ${srcDir}/articles/articles.css ${outDir}/articles.css
 
 # Building the individual articles
 
-cat ${srcDir}/header.html > ${outDir}/tabbed-box-component.html
-echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"tabbed-box-component.css\">" >> ${outDir}/tabbed-box-component.html
-cat ${srcDir}/nav-bar.html ${srcDir}/articles/tabbed-box-component.html >> ${outDir}/tabbed-box-component.html
-echo "<script src=\"tabbed-box-component.js\"></script>" >> ${outDir}/tabbed-box-component.html
-cat ${srcDir}/footer.html >> ${outDir}/tabbed-box-component.html
-cp ${srcDir}/articles/tabbed-box-component.css ${outDir}/tabbed-box-component.css
-cp ${srcDir}/articles/tabbed-box-component.js ${outDir}/tabbed-box-component.js
+cat ${srcDir}/subpage-header.html > ${outDir}/articles/tabbed-box-component.html
+echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"tabbed-box-component.css\">" >> ${outDir}/articles/tabbed-box-component.html
+cat ${srcDir}/subpage-nav-bar.html ${srcDir}/articles/tabbed-box-component.html >> ${outDir}/articles/tabbed-box-component.html
+echo "<script src=\"tabbed-box-component.js\"></script>" >> ${outDir}/articles/tabbed-box-component.html
+cat ${srcDir}/footer.html >> ${outDir}/articles/tabbed-box-component.html
+cp ${srcDir}/articles/tabbed-box-component.css ${outDir}/articles/tabbed-box-component.css
+cp ${srcDir}/articles/tabbed-box-component.js ${outDir}/articles/tabbed-box-component.js
