@@ -1,0 +1,20 @@
+# {
+#   # "extends": "eslint-config-google",
+#   "parserOptions": {
+#    "ecmaVersion": 6
+#   }
+# }
+{
+  "parserOptions": {
+    "ecmaVersion": 6,
+    # "sourceType": "module",
+    # "ecmaFeatures": {
+    #   "jsx": true
+    # }
+  },
+  "rules": {
+    no-const-assign: "error",
+    no-unused-vars: "error",
+    semi: ["error", "never"]
+  }
+}

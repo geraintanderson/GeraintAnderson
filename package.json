@@ -1,0 +1,24 @@
+{
+  "name": "geraintanderson.com",
+  "version": "1.0.0",
+  "description": "My personal site",
+  "main": "index.js",
+  "scripts": {
+    "build": "rm -r public_html && node build/build.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/geraintanderson/GeraintAnderson.com.git"
+  },
+  "author": "Geraint Anderson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/geraintanderson/GeraintAnderson.com/issues"
+  },
+  "homepage": "https://github.com/geraintanderson/GeraintAnderson.com#readme",
+  "devDependencies": {
+    "eslint": "^5.1.0",
+    "eslint-config-google": "^0.9.1"
+  }
+}
