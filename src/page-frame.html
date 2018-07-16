@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+  <head>
+    <title>Geraint Anderson</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Geraint Anderson">
+    <meta name="description" content="The personal profile and portfolio for Geraint Anderson, showcasing some of my work."
+    <link href="favicon.ico" rel="shortcut icon" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{{nestingPrefix}}index.css">
+    <!-- Additional stylesheets go here -->
+    {{#each styles}}
+    <link rel="stylesheet" type="text/css" href="{{this}}">
+    {{/each}}
+  </head>
+  <body>
+    <nav>
+      <div id="nav-toggle">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <ul>
+        <li id="nav-index"><a href="{{nestingPrefix}}index.html">Home</a></li>
+        <li id="nav-profile"><a href="{{nestingPrefix}}profile.html">Profile</a></li>
+        <li id="nav-cv"><a href="{{nestingPrefix}}cv.html">CV</a></li>
+        <!--li id="nav-portfolio"><a href="portfolio.html">Portfolio</a></li--><!-- Links to external sites. Palysade, ingraco, reading list -->
+        <li id="nav-articles"><a href="{{nestingPrefix}}articles.html">Articles</a></li>
+      </ul>
+    </nav>
+    <article>
+      {{{pageContent}}}
+      <!-- Page content goes here -->
+    </article>
+    <footer>
+      <p>Created by <a href="mailto:geraint@geraintanderson.com">Geraint Anderson</a></p>
+    </footer>
+    <script src="{{nestingPrefix}}index.js"></script>
+    <!-- Additional scripts go here -->
+    {{#each scripts}}
+    <script src="{{this}}"></script>
+    {{/each}}
+  </body>
+</html>
