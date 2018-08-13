@@ -1,0 +1,25 @@
+<h1>Caesar Cipher</h1>
+<span class="article-date-stamp">Fist Published: 20th June 2014</span>
+<span class="article-date-stamp">Last Updated: 18th July 2018</span>
+<section>
+  <p>The Caesar Cipher is one of oldest and least secure methods of encryption. This page uses JavaScript to encrypt the plain text according to the key. By performing the encryption algorithm in reverse you can also decrypt the cipher text using the same key.</p>
+
+  <p>There are a number of pitfalls with this. The position of upper case letters don't change and numbers are not encrypted making it easy to identify starts of words, names, the letter "I" e.t.c. which could give away enough information to quickly identify the key by eye. By adding more characters to the character array the effect of these issues can be limited. Better still would be to perform the shift on the ASCII value rather than supplying a character list, although due to the limited number of potential keys this cipher can still be cracked quickly with a brute force attack.</p>
+
+  <p>I have included code to decrypt the cipher text without the key. This method tries each possible key and looks at the number of words in the decrypted text that match English words. To reduce storage costs, bandwidth and processing I have only included a small dictionary making use of the fact that English speakers rarely have a very varied vocabulary. According to the Oxford English Dictionary <a href="https://en.oxforddictionaries.com/explore/what-can-corpus-tell-us-about-language/">the ten most common lemmas (base of a word) account for 25% of all words used in the English language</a>. I have used a slightly longer list consisting of the <a href="https://en.wikipedia.org/wiki/Most_common_words_in_English">100 most common English words</a> which account for about half of all written material. Using small arrays like these means it would be easy and only need a small amount of storage and bandwidth to expand this to work for numerous languages. When you crack the cipher text the table that is displayed shows the number of matched words from this limited dictionary.</p>
+</section>
+
+<form>
+  <label>Key</label>
+  <input id="cipher-key" type="text">
+  <label>Text</label>
+  <textarea id="text"></textarea>
+
+  <button id="encrypt" type="button">Encrypt</button>
+  <button id="decrypt" type="button">Decrypt</button>
+  <button id="crack" type="button">Crack It</button>
+</form>
+
+
+<!-- TODO: after encrypting or decrypting, the text should be switched character by character. Ideally over 1s regardless of length so it should get the total lenght and divide by 1000 to get the ms between each character substitution. -->
+<!-- TODO: Add Discuss -->

@@ -20,15 +20,11 @@ function buildPage (config) {
     const relativePath = path.relative(homeDir, thisDir)
     const nestingLayers = relativePath.split(path.sep).filter(path => path !== '').map(() => '..').join(path.sep)
     const nestingPrefix = nestingLayers ? nestingLayers + '/' : ''
-    console.log('---- nesting prefix for ' + thisDir + ' = ' + nestingPrefix)
-    console.log(homeDir + ' - ' + thisDir)
-    console.log(relativePath)
-    console.log(relativePath.split(path.sep))
     return nestingPrefix
   }
 
+  // XXX Before doing anything, delete the old public_html folder (buildDir)
   return new Promise ((resolve, reject) => {
-    console.log(config)
     Promise.all(
       config.styles.map(file => {
         fs.copyFile(file, path.join(config.destDir, path.basename(file)))
@@ -48,7 +44,6 @@ function buildPage (config) {
       const context = _.clone(config)
       context.styles = context.styles.map(style => path.basename(style))
       context.scripts = context.scripts.map(script => path.basename(script))
-      // XXX Do the same for scripts
       context.nestingPrefix = getNestingPrefix(buildDir, config.destDir)
       context.pageContent = sources[1]
       return template(context)
@@ -124,8 +119,12 @@ fs.mkdir(buildDir)
   scripts: [path.join(srcDir, 'articles', 'tabbed-box-component.js')],
   destDir: path.join(buildDir, 'articles')
 }))
+.then(() => buildPage({
+  html: path.join(srcDir, 'articles', 'caesar-cipher.html'),
+  outFile: 'caesar-cipher.html',
+  styles: [path.join(srcDir, 'articles', 'caesar-cipher.css')],
+  scripts: [path.join(srcDir, 'articles', 'caesar-cipher.js')],
+  destDir: path.join(buildDir, 'articles')
+}))
 
 .catch(console.log)
-
-// XXX TODO NEXT: Finish this builder...
-// XXX tidy up the functions that are passed to the promise
