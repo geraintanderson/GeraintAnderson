@@ -6,6 +6,26 @@ const handlebars = require('handlebars')
 const _ = require('underscore')
 const buildDir = 'public_html'
 const srcDir = 'src'
+const nodeModulesDir = 'node_modules'
+
+handlebars.registerHelper('scriptTag', function (scriptObj) {
+  let scriptTag = '<script src="'
+
+  if (scriptObj.copy) {
+    // If the file is copied, it is put into the same directory as the HTML
+    scriptTag += path.basename(scriptObj.src)
+  } else {
+    // If the file does not need copying, it is because it is in the front end depenencies directory
+    scriptTag += '../scripts/' + path.basename(scriptObj.src)
+  }
+
+  if (scriptObj.type) {
+    scriptTag += '" type="' + scriptObj.type
+  }
+  scriptTag += '"></script>'
+
+  return new handlebars.SafeString(scriptTag)
+})
 
 function buildPage (config) {
   // Config: {
@@ -23,7 +43,6 @@ function buildPage (config) {
     return nestingPrefix
   }
 
-  // XXX Before doing anything, delete the old public_html folder (buildDir)
   return new Promise ((resolve, reject) => {
     Promise.all(
       config.styles.map(file => {
@@ -31,8 +50,10 @@ function buildPage (config) {
       })
     )
     .then(() => Promise.all(
-      config.scripts.map(file => {
-        fs.copyFile(file, path.join(config.destDir, path.basename(file)))
+      config.scripts.map(script => {
+        if (script.copy) {
+          fs.copyFile(script.src, path.join(config.destDir, path.basename(script.src)))
+        }
       })
     ))
     .then(() => Promise.all([
@@ -43,7 +64,6 @@ function buildPage (config) {
       const template = handlebars.compile(sources[0])
       const context = _.clone(config)
       context.styles = context.styles.map(style => path.basename(style))
-      context.scripts = context.scripts.map(script => path.basename(script))
       context.nestingPrefix = getNestingPrefix(buildDir, config.destDir)
       context.pageContent = sources[1]
       return template(context)
@@ -60,6 +80,7 @@ fs.mkdir(buildDir)
 .then(() => Promise.all([
   fs.mkdir(path.join(buildDir, 'images')),
   fs.mkdir(path.join(buildDir, 'assets')),
+  fs.mkdir(path.join(buildDir, 'scripts')),
   fs.mkdir(path.join(buildDir, 'articles'))
 ]))
 // Copy common static files
@@ -70,6 +91,11 @@ fs.mkdir(buildDir)
 .then(() => fs.readdir(path.join(srcDir, 'assets')))
 .then((files) => {
   files.forEach(file => fs.copyFile(path.join(srcDir, 'assets', file), path.join(buildDir, 'assets', file)))
+})
+.then(() => {
+  [nodeModulesDir, 'grrypto', 'src', 'caesar-cipher', 'caesar-cipher.js']
+
+  fs.copyFile(path.join(nodeModulesDir, 'grrypto', 'src', 'caesar-cipher', 'caesar-cipher.js'), path.join(buildDir, 'scripts', 'caesar-cipher.js'))
 })
 .then(() => {
   fs.copyFile(path.join(srcDir, 'index.js'), path.join(buildDir, 'index.js'))
@@ -116,14 +142,19 @@ fs.mkdir(buildDir)
   html: path.join(srcDir, 'articles', 'tabbed-box-component.html'),
   outFile: 'tabbed-box-component.html',
   styles: [path.join(srcDir, 'articles', 'tabbed-box-component.css')],
-  scripts: [path.join(srcDir, 'articles', 'tabbed-box-component.js')],
+  scripts: [
+    { src: path.join(srcDir, 'articles', 'tabbed-box-component.js'), copy: true }
+  ],
   destDir: path.join(buildDir, 'articles')
 }))
 .then(() => buildPage({
   html: path.join(srcDir, 'articles', 'caesar-cipher.html'),
   outFile: 'caesar-cipher.html',
   styles: [path.join(srcDir, 'articles', 'caesar-cipher.css')],
-  scripts: [path.join(srcDir, 'articles', 'caesar-cipher.js')],
+  scripts: [
+    { src: path.join(nodeModulesDir, 'grrypto', 'src', 'caesar-cipher', 'caesar-cipher.js'), type: 'module', copy: false }, // REVIEW The grrypto library comes with a barrel so I should be able to import the caesar-cipher from grrypto/src/index.js but I would need to make sure that both the index and the caesar-cipher module are copied accross here. I'd then need to change the way the CaesarCipher is imported because it will no longer be the default (wrapped in {})
+    { src: path.join(srcDir, 'articles', 'caesar-cipher.js'), type: 'module', copy: true } // the copy:false means that I don't need to copy the file to a new directory. It's already available for the application and can be referenced straight from the src.
+  ],
   destDir: path.join(buildDir, 'articles')
 }))
 

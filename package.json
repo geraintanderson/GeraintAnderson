@@ -22,6 +22,7 @@
     "eslint-config-google": "^0.9.1"
   },
   "dependencies": {
+    "grrypto": "github:geraintanderson/grrypto",
     "handlebars": "^4.0.11",
     "underscore": "^1.9.1"
   }
