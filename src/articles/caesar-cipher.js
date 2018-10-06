@@ -21,20 +21,103 @@ import CaesarCipher from '../scripts/caesar-cipher.js'
     document.getElementById('crack').addEventListener('click', crack)
   }
 
+  function getUserInputs () {
+    return {
+      key: parseInt(document.getElementById('cipher-key').value),
+      text: document.getElementById('text-input').value
+    }
+  }
+
+  function wipeDisplay () {
+    const textDisplay = document.getElementById('text-display')
+    textDisplay.innerHTML = ''
+  }
+
+  function displayTransformedText (text) {
+    const textDisplay = document.getElementById('text-display')
+    const textNode = document.createTextNode(text)
+    textDisplay.appendChild(textNode)
+  }
+
+  function displayFrequencyAnalysis (fa, crackedKey) {
+    const textDisplay = document.getElementById('text-display')
+
+    const rows = Object.keys(fa)
+    .map(key => {
+      const rowClass = crackedKey == key ? ' class="cracked-key"' : ''
+      return `<tr ${rowClass}>
+        <td>${key}</td>
+        <td>${fa[key]}</td>
+      </tr>`
+    })
+
+    let faTable = `
+      <table>
+        <thead>
+          <tr>
+            <th>Key</th>
+            <th>Frequency</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${rows}
+        </tbody>
+      </table>
+    `
+
+    textDisplay.innerHTML += faTable
+
+    // const table = document.getElementById('frequency-analysis')
+    // const tableHeader = document.createElement('thead')
+    // const keyHeader = document.createElement('td')
+    // const countHeader = document.createElement('td')
+    // keyHeader.appendChild(document.createTextNode('Key'))
+    // countHeader.appendChild(document.createTextNode('Count'))
+    // tableHeader.appendChild(keyHeader)
+    // tableHeader.appendChild(countHeader)
+    // table.appendChild(tableHeader)
+    // console.log('--- fa ui')
+    // Object.keys(fa).forEach(key => {
+    //   // REVIEW Is this the best way to do it, or should I use innerHTML, or createElement, or stick with insertRow/insertCell..?
+    //   const row = table.insertRow(key)
+    //   const keyCell = row.insertCell(0)
+    //   const countCell = row.insertCell(1)
+    //   keyCell.innerHTML = 'aaa'
+    //   countCell.innerHTML = 'bbb'
+    // })
+    console.log('----- fin')
+  }
+
   function encrypt () {
-    console.log('--- encrypt')
+    const { key, text } = getUserInputs()
+
+    const ciphertext = new CaesarCipher({key: key}).encrypt(text)
+    wipeDisplay()
+    displayTransformedText(ciphertext)
   }
 
   function decrypt () {
-    console.log('--- decrypt')
+    const { key, text } = getUserInputs()
+
+    const plaintext = new CaesarCipher({key: key}).decrypt(text)
+    wipeDisplay()
+    displayTransformedText(plaintext)
   }
 
   function crack () {
-    console.log('--- crack')
+    const { key, text } = getUserInputs()
+
+    const crackResults = new CaesarCipher({key: key}).crack(text)
+    wipeDisplay()
+    displayTransformedText(crackResults.decrypted)
+    displayFrequencyAnalysis(crackResults.fa, crackResults.key)
   }
 
   window.onload = function () {
     initialise()
   }
+
+  // const textInput = document.getElementById('#text-input')
+  // const textDisplay = document.getElementById('#text-display')
 
 })()
