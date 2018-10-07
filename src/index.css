@@ -18,13 +18,13 @@ h1 {
   font-size: 3em;
 }
 h2 {
-  font-size: 2.5em;
-}
-h3 {
   font-size: 2em;
 }
+h3 {
+  font-size: 1.8em;
+}
 h4 {
-  font-size: 1.7em;
+  font-size: 1.6em;
 }
 h5 {
   font-size: 1.4em;
@@ -42,8 +42,8 @@ pre {
   background-color: #e8e3cc;
   border-radius: 3px;
   font-size: 0.8em;
-  padding: 1em;
   overflow-x: scroll;
+  padding: 1em;
 }
 
 input[type=text] ,input[type=number] {
