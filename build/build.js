@@ -139,6 +139,13 @@ fs.mkdir(buildDir)
   destDir: buildDir
 }))
 .then(() => buildPage({
+  html: path.join(srcDir, 'articles', 'angular-ui-bootstrap.html'),
+  outFile: 'angular-ui-bootstrap.html',
+  styles: [],
+  scripts: [],
+  destDir: path.join(buildDir, 'articles')
+}))
+.then(() => buildPage({
   html: path.join(srcDir, 'articles', 'tabbed-box-component.html'),
   outFile: 'tabbed-box-component.html',
   styles: [path.join(srcDir, 'articles', 'tabbed-box-component.css')],

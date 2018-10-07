@@ -37,6 +37,15 @@ label {
   margin-left: 1.5em;
 }
 
+pre {
+  border: 1px solid #B2B2B2;
+  background-color: #e8e3cc;
+  border-radius: 3px;
+  font-size: 0.8em;
+  padding: 1em;
+  overflow-x: scroll;
+}
+
 input[type=text] ,input[type=number] {
   width: 100%;
   padding: 0.5em;
