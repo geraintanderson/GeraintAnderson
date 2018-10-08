@@ -1,3 +1,10 @@
+/*
+  Colour Scheme:
+    #e8e3cc - grey with hint of yellow used for backgrounds
+    #000628 - Off black used for most text
+    #B2B2B2 - Grey used for borders
+ */
+
 html {
   font-size: 20px;
 }
@@ -72,7 +79,7 @@ textarea:focus {
 
 button {
   border-radius: 5px;
-  border: 2px solid darkgreen;
+  border: 2px solid darkgreen; /* Make these buttons nicer XXX */
   background-color: green;
   padding: 1em;
   cursor: pointer;

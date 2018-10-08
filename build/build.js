@@ -139,6 +139,15 @@ fs.mkdir(buildDir)
   destDir: buildDir
 }))
 .then(() => buildPage({
+  html: path.join(srcDir, 'articles', 'angularjs-notes-app.html'),
+  outFile: 'angularjs-notes-app.html',
+  styles: [path.join(srcDir, 'articles', 'angularjs-notes-app.css')],
+  scripts: [
+    { src: path.join(srcDir, 'articles', 'angularjs-notes-app.js'), copy: true }
+  ],
+  destDir: path.join(buildDir, 'articles')
+}))
+.then(() => buildPage({
   html: path.join(srcDir, 'articles', 'angular-ui-bootstrap.html'),
   outFile: 'angular-ui-bootstrap.html',
   styles: [],
