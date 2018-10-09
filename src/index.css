@@ -157,6 +157,11 @@ nav li.selected a {
   width: 15px;
 }
 
+.social-bottom {
+  /* margin: 0 auto; */
+  text-align: center;
+}
+
 /* Flex styles for larger screens */
 @media screen and (min-width: 786px) {
   #nav-toggle {
