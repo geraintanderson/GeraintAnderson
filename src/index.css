@@ -18,7 +18,7 @@ body {
 
 p {
   font-size: 1em;
-  line-height: 1.7em;
+  line-height: 1.5em;
 }
 
 h1 {
@@ -159,6 +159,8 @@ nav li.selected a {
 
 .social-bottom {
   /* margin: 0 auto; */
+  margin-top: 0.3em;
+  font-size: 2em;
   text-align: center;
 }
 

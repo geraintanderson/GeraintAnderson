@@ -101,6 +101,7 @@ fs.mkdir(buildDir)
   fs.copyFile(path.join(srcDir, 'index.js'), path.join(buildDir, 'index.js'))
   fs.copyFile(path.join(srcDir, 'index.css'), path.join(buildDir, 'index.css'))
   fs.copyFile(path.join(srcDir, 'favicon.ico'), path.join(buildDir, 'favicon.ico'))
+  fs.copyFile(path.join(nodeModulesDir, '@fortawesome', 'fontawesome-free', 'js', 'all.min.js'), path.join(buildDir, 'scripts', 'fontawesome.js'))
 })
 // Build the site pages
 .then(() => buildPage({

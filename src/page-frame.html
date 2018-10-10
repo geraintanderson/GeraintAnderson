@@ -15,7 +15,6 @@
   </head>
   <body>
     <nav>
-      <!-- TODO Add social media buttons - twitter and linkedin -->
       <div id="nav-toggle"><!-- REVIEW What am I doing with this bit..? -->
         <div></div>
         <div></div>
@@ -25,7 +24,7 @@
         <li id="nav-index"><a href="{{nestingPrefix}}index.html">Home</a></li>
         <li id="nav-profile"><a href="{{nestingPrefix}}profile.html">Profile</a></li>
         <li id="nav-cv"><a href="{{nestingPrefix}}cv.html">CV</a></li>
-        <!--li id="nav-portfolio"><a href="portfolio.html">Portfolio</a></li--><!-- Links to external sites. Palysade, ingraco, reading list -->
+        <!--li id="nav-portfolio"><a href="portfolio.html">Portfolio</a></li--><!-- Links to external sites. Palysade, ingraco, reading list --><!-- REVIEW -->
         <li id="nav-articles"><a href="{{nestingPrefix}}articles.html">Articles</a></li>
       </ul>
     </nav>
@@ -33,16 +32,15 @@
       {{{pageContent}}}
       <!-- Page content goes here -->
     </article>
-    <!-- TODO The social buttons should be swapped for font awesome icons -->
     <div class="social-bottom">
-      <a href="https://twitter.com/intent/tweet?text=http://geraintanderson.com/%20%40Geraint_TJ_A" class="twitter-button">Twitter</a>
-      <a href="https://www.linkedin.com/shareArticle?url=http://geraintanderson.com">LinkedIn</a>
-
+      <a href="https://twitter.com/intent/tweet?text=http://geraintanderson.com/%20%40Geraint_TJ_A" class="twitter-button"><span class="fab fa-twitter-square"></span></a>
+      <a href="https://www.linkedin.com/shareArticle?url=http://geraintanderson.com"><i class="fab fa-linkedin"></i></a>
     </div>
     <footer>
       <p>Created by <a href="mailto:geraint@geraintanderson.com">Geraint Anderson</a></p>
     </footer>
     <script src="{{nestingPrefix}}index.js"></script>
+    <script src="{{nestingPrefix}}scripts/fontawesome.js" defer></script>
     <!-- Additional scripts go here -->
     {{#each scripts}}
     {{scriptTag this}}
