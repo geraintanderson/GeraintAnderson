@@ -1,0 +1,12 @@
+RewriteEngine On
+
+# Disable Automatic Directory detection
+DirectorySlash Off
+
+# Force WWW
+RewriteCond %{HTTP_HOST} ^geraintanderson\.com
+RewriteRule ^(.*)$ http://www.geraintanderson.com/$1 [R=301,L]
+
+# Hide extension
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.html [NC,L]

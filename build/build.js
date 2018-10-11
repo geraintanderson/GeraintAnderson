@@ -98,6 +98,7 @@ fs.mkdir(buildDir)
   fs.copyFile(path.join(nodeModulesDir, 'grrypto', 'src', 'caesar-cipher', 'caesar-cipher.js'), path.join(buildDir, 'scripts', 'caesar-cipher.js'))
 })
 .then(() => {
+  fs.copyFile(path.join(srcDir, '..', '.htaccess'), path.join(buildDir, '.htaccess'))
   fs.copyFile(path.join(srcDir, 'index.js'), path.join(buildDir, 'index.js'))
   fs.copyFile(path.join(srcDir, 'index.css'), path.join(buildDir, 'index.css'))
   fs.copyFile(path.join(srcDir, 'favicon.ico'), path.join(buildDir, 'favicon.ico'))
