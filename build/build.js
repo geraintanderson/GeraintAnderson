@@ -128,7 +128,7 @@ fs.mkdir(buildDir)
 .then(() => buildPage({
   html: path.join(srcDir, 'portfolio', 'portfolio.html'),
   outFile: 'portfolio.html',
-  styles: [],
+  styles: [path.join(srcDir, 'portfolio', 'portfolio.css')],
   scripts: [],
   destDir: buildDir
 }))

@@ -1,13 +1,14 @@
 /*
   Colour Scheme:
-    #e8e3cc - grey with hint of yellow used for backgrounds
-    #000628 - Off black used for most text
-    #B2B2B2 - Grey used for borders
- */
+  #e8e3cc - grey with hint of yellow used for backgrounds
+  #000628 - Off black used for most text
+  #B2B2B2 - Grey used for borders
+*/
 
-html {
-  font-size: 20px;
-}
+/* Base styles */
+/* html {
+  font-size: 14px;
+} */
 
 body {
   background-color: #e8e3cc;
@@ -18,7 +19,7 @@ body {
 
 p {
   font-size: 1em;
-  line-height: 1.5em;
+  line-height: 1.8em;
 }
 
 h1 {
@@ -45,8 +46,8 @@ label {
 }
 
 pre {
-  border: 1px solid #B2B2B2;
   background-color: #e8e3cc;
+  border: 1px solid #B2B2B2;
   border-radius: 3px;
   font-size: 0.8em;
   overflow-x: scroll;
@@ -54,12 +55,12 @@ pre {
 }
 
 input[type=text] ,input[type=number] {
-  width: 100%;
-  padding: 0.5em;
-  margin: 0.5em;
-  border-radius: 3px;
   border: 2px solid #B2B2B2;
+  border-radius: 3px;
+  margin: 0.5em;
   outline: none;
+  padding: 0.5em;
+  width: 100%;
 }
 input[type=text]:focus {
     border: 2px solid #555;
@@ -101,6 +102,27 @@ code {
   white-space: pre-wrap;
 }
 
+/* Base Styles for small screens */
+@media screen and (min-width: 321px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+/* Base Styles for medium screens */
+@media screen and (min-width: 500) {
+  html {
+    font-size: 18px;
+  }
+}
+
+/* Base Styles for large screens */
+@media screen and (min-width: 786px) {
+  html {
+    font-size: 20px;
+  }
+}
+
 /* Nav styles (start) */
 .hidden {
   display: none;
@@ -119,11 +141,11 @@ nav ul {
 }
 
 nav a {
-  text-decoration: none;
-  text-align: center;
+  color: #727272;
   display: block;
   padding: 8px 0;
-  color: #727272;
+  text-align: center;
+  text-decoration: none;
 }
 
 nav a:hover {
