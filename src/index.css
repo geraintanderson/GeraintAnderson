@@ -19,7 +19,7 @@ body {
 
 p {
   font-size: 1em;
-  line-height: 1.8em;
+  line-height: 1.5em;
 }
 
 h1 {
@@ -110,7 +110,7 @@ code {
 }
 
 /* Base Styles for medium screens */
-@media screen and (min-width: 500) {
+@media screen and (min-width: 500px) {
   html {
     font-size: 18px;
   }
