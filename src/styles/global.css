@@ -1,0 +1,10 @@
+/* 'Fira Sans', 'Playfair Display' */
+:root {
+  font-size: calc(1rem + 0.5vw);
+  font-family: Fira Sans;
+}
+
+h1, h2, h3, h4, h5, h6{
+  font-family: Playfair Display;
+  max-width: 80vw;
+}
