@@ -85,12 +85,8 @@ NavLink.defaultProps = {
 
 function toggleMenu () {
   let menuIsVisible = false
-  console.log('------- outer')
   return () => {
-    console.log('------- inner')
     const collapsableContent = document.querySelector('.collapsable-group')
-
-    console.log('--- click' + menuIsVisible)
     menuIsVisible = !menuIsVisible
     if (menuIsVisible) {
       collapsableContent.classList.add('visible')
@@ -125,9 +121,9 @@ export default () => {
           <ListItem>
             <NavLink to="/about/">About</NavLink>
           </ListItem>
-          <ListItem>
+          {/* <ListItem>
             <NavLink to="/articles/">Articles</NavLink>
-          </ListItem>
+          </ListItem> */}
           <ListItem>
             <NavLink to="/contact/">Contact</NavLink>
           </ListItem>
