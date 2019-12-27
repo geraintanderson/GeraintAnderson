@@ -24,7 +24,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.4.0",
     "grrypto": "github:geraintanderson/grrypto",
-    "handlebars": "^4.0.11",
+    "handlebars": "^4.3.0",
     "underscore": "^1.9.1"
   }
 }
