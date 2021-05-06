@@ -25,6 +25,6 @@
     "@fortawesome/fontawesome-free": "^5.4.0",
     "grrypto": "github:geraintanderson/grrypto",
     "handlebars": "^4.0.11",
-    "underscore": "^1.9.1"
+    "underscore": "^1.12.1"
   }
 }
